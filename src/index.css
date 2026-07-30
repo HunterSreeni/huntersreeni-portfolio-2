@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #333366;
+  --color-primary-dark: #000033;
+  --color-primary-light: #6666cc;
+  --color-accent: #41fe8f;
+  --color-neutral: #ccccff;
+  --color-stroke: #8176ff;
+  --color-bg: #fafafd;
+  --color-bg-alt: #f1f0fb;
+  --color-text: #1a1a2e;
+  --color-text-soft: #4a4a68;
+  --font-sans: "Roboto Flex", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+h1, h2 {
+  margin-top: 2px;
+}
+
+@keyframes taglineCycle {
+  0% { opacity: 0; transform: translateY(6px); }
+  4% { opacity: 1; transform: translateY(0); }
+  30% { opacity: 1; }
+  33% { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 0; }
+}
+
+.tagline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  animation: taglineCycle 9s infinite;
+}
+.tagline-1 { animation-delay: 0s; }
+.tagline-2 { animation-delay: 3s; }
+.tagline-3 { animation-delay: 6s; }
+
+.foundations summary { list-style: none; cursor: pointer; }
+.foundations summary::-webkit-details-marker { display: none; }
+.foundations summary::before { content: "+ "; }
+.foundations[open] summary::before { content: "\2212 "; }
