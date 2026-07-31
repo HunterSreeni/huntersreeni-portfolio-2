@@ -1,3 +1,6 @@
+import * as THREE from "three"
+import WireGadget from "./WireGadget"
+
 const GROUPS = [
   {
     title: "Languages",
@@ -27,9 +30,19 @@ export default function Skills() {
   return (
     <section id="skills" className="bg-bg-alt px-6 py-12">
       <div className="mx-auto max-w-[1100px]">
-        <p className="mb-1.5 text-xs font-bold tracking-wider text-stroke uppercase">06 · Skills</p>
-        <h2 className="mb-8 text-3xl font-bold text-primary-dark">What I work with</h2>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">05 · Skills</p>
+            <h2 className="text-3xl font-bold text-primary-dark">What I work with</h2>
+          </div>
+          <WireGadget
+            className="section-gadget"
+            geometry={() => new THREE.ConeGeometry(0.9, 1.5, 6)}
+            color={0xccccff}
+            speed={0.008}
+          />
+        </div>
+        <div className="reveal-grid mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
           {GROUPS.map((g) => (
             <div key={g.title} className="rounded-2xl border border-neutral bg-white p-6">
               <h3 className="mb-3 text-lg font-bold text-primary-dark">{g.title}</h3>

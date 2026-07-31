@@ -1,3 +1,6 @@
+import * as THREE from "three"
+import WireGadget from "./WireGadget"
+
 function CertCard({
   name,
   issuer,
@@ -13,13 +16,13 @@ function CertCard({
 }) {
   return (
     <div
-      className={`mb-2.5 flex items-center justify-between gap-4 rounded-xl border border-neutral last:mb-0 ${
+      className={`cert-card mb-2.5 flex items-center justify-between gap-4 rounded-xl border border-neutral last:mb-0 ${
         compact ? "bg-bg-alt px-5 py-3" : "bg-white px-5 py-4"
       }`}
     >
       <div className="flex flex-col gap-0.5">
         <span className={`font-semibold text-text ${compact ? "text-sm" : ""}`}>{name}</span>
-        <span className="text-[13px] text-text-soft">{issuer}</span>
+        <span className="font-mono text-[12px] text-text-soft">{issuer}</span>
       </div>
       {link && (
         <a
@@ -40,10 +43,20 @@ export default function Arsenal() {
   return (
     <section id="arsenal" className="bg-bg-alt px-6 py-12">
       <div className="mx-auto max-w-[1100px]">
-        <p className="mb-1.5 text-xs font-bold tracking-wider text-stroke uppercase">02 · The Arsenal</p>
-        <h2 className="mb-8 text-3xl font-bold text-primary-dark">Certifications &amp; credentials</h2>
+        <div className="section-head mb-8">
+          <div>
+            <p className="eyebrow">03 · Credentials</p>
+            <h2 className="text-3xl font-bold text-primary-dark">Certifications &amp; credentials</h2>
+          </div>
+          <WireGadget
+            className="section-gadget"
+            geometry={() => new THREE.IcosahedronGeometry(0.85, 0)}
+            color={0x41fe8f}
+            speed={0.009}
+          />
+        </div>
 
-        <div className="mb-9">
+        <div className="cert-group mb-9">
           <h3 className="mb-3.5 flex items-center gap-2.5 text-[1.05rem] font-bold text-primary-dark">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary-light" />
             QA
@@ -65,7 +78,7 @@ export default function Arsenal() {
           />
         </div>
 
-        <div className="mb-9">
+        <div className="cert-group mb-9">
           <h3 className="mb-3.5 flex items-center gap-2.5 text-[1.05rem] font-bold text-primary-dark">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-accent" />
             AI
@@ -78,7 +91,7 @@ export default function Arsenal() {
           />
         </div>
 
-        <div>
+        <div className="cert-group">
           <h3 className="mb-3.5 flex items-center gap-2.5 text-[1.05rem] font-bold text-primary-dark">
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-stroke" />
             Security

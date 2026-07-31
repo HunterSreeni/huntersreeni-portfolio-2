@@ -1,5 +1,9 @@
+import * as THREE from "three"
+import WireGadget from "./WireGadget"
+
 const BUILDS = [
   {
+    caseId: "TC-001 · electron-mcp-browser",
     name: "Electronium",
     flagship: true,
     body: "A local-first MCP server that bridges AI assistants to a real, logged-in Chrome session over Chrome DevTools Protocol - built because Playwright-driven browsers kept getting blocked by Cloudflare and other anti-bot layers. Any MCP-compatible AI can use it, not just mine.",
@@ -7,51 +11,68 @@ const BUILDS = [
     href: "https://github.com/HunterSreeni/electron-mcp-browser",
   },
   {
+    caseId: "TC-002 · Custom-LLM-Benchmark",
     name: "SreeniBench",
     body: "A practical LLM benchmark spanning security, coding, reasoning, tool use, CI/CD, and supply-chain categories - built to test what actually matters for engineers, not academic trivia. Evolving toward a general-purpose benchmark anyone can run against their own model choices.",
     linkLabel: "GitHub →",
     href: "https://github.com/HunterSreeni/Custom-LLM-Benchmark",
   },
   {
-    name: "nithyakarma.org",
+    caseId: "TC-003 · nithyakarma.org",
+    name: "Nithyakarma",
     body: "A community project, not a solo personal tool - daily-ritual tracking (PWA + Android) built and maintained for a wider group of practitioners.",
-    linkLabel: "Live site →",
+    linkLabel: "Visit →",
     href: "https://nithyakarma.org",
   },
 ]
 
 export default function Builds() {
   return (
-    <section id="builds" className="mx-auto max-w-[1100px] px-6 py-12">
-      <p className="mb-1.5 text-xs font-bold tracking-wider text-stroke uppercase">03 · Builds</p>
-      <h2 className="mb-8 text-3xl font-bold text-primary-dark">Active work</h2>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {BUILDS.map((b) => (
-          <article
-            key={b.name}
-            className={`relative flex flex-col rounded-2xl border bg-white p-6 ${
-              b.flagship
-                ? "border-[1.5px] border-accent shadow-[0_6px_20px_rgba(65,254,143,0.18)]"
-                : "border-neutral"
-            }`}
-          >
-            {b.flagship && (
-              <span className="absolute -top-2.5 right-5 rounded-full bg-accent px-2.5 py-1 text-[10px] font-extrabold tracking-wide text-primary-dark uppercase">
-                Flagship
-              </span>
-            )}
-            <h3 className="mb-2 text-lg font-bold text-primary-dark">{b.name}</h3>
-            <p className="mb-2 text-text-soft">{b.body}</p>
-            <a
-              href={b.href}
-              target="_blank"
-              rel="noopener"
-              className="mt-auto w-fit self-start rounded-full border border-stroke px-4 py-2 text-sm font-semibold text-primary hover:bg-neutral"
+    <section id="builds" className="bg-bg-alt px-6 py-12">
+      <div className="mx-auto max-w-[1100px]">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">04 · Shipped work</p>
+            <h2 className="text-3xl font-bold text-primary-dark">Built, not just proposed</h2>
+          </div>
+          <WireGadget
+            className="section-gadget"
+            geometry={() => new THREE.DodecahedronGeometry(0.85, 0)}
+            color={0x6666cc}
+            speed={0.01}
+          />
+        </div>
+        <div className="reveal-grid mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {BUILDS.map((b) => (
+            <article
+              key={b.name}
+              className={`relative flex flex-col gap-2.5 rounded-2xl border bg-white p-6 ${
+                b.flagship
+                  ? "border-[1.5px] border-accent shadow-[0_6px_20px_rgba(65,254,143,0.18)]"
+                  : "border-neutral"
+              }`}
             >
-              {b.linkLabel}
-            </a>
-          </article>
-        ))}
+              {b.flagship && (
+                <span className="absolute -top-2.5 right-5 rounded-full bg-accent px-2.5 py-1 text-[10px] font-extrabold tracking-wide text-primary-dark uppercase">
+                  Flagship
+                </span>
+              )}
+              <span className="font-mono text-[11px] text-text-soft">{b.caseId}</span>
+              <h3 className="m-0 text-lg font-bold text-primary-dark">{b.name}</h3>
+              <p className="m-0 text-[0.92rem] leading-relaxed text-text-soft">{b.body}</p>
+              <div className="mt-auto border-t border-dashed border-neutral pt-2.5">
+                <a
+                  href={b.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="text-sm font-bold text-primary"
+                >
+                  {b.linkLabel}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   )

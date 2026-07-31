@@ -1,9 +1,8 @@
 const LINKS = [
   ["#about", "About"],
+  ["#hackathons", "Hackathons"],
   ["#arsenal", "Arsenal"],
   ["#builds", "Builds"],
-  ["#hackathons", "Hackathons"],
-  ["#archive", "Archive"],
   ["#skills", "Skills"],
   ["#services", "Services"],
   ["#contact", "Contact"],

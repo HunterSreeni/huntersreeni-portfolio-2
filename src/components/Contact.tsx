@@ -8,23 +8,24 @@ const LINKS = [
 
 export default function Contact() {
   return (
-    <footer id="contact" className="mx-auto max-w-[1100px] px-6 py-12 pb-12 text-center">
-      <p className="mb-1.5 text-xs font-bold tracking-wider text-stroke uppercase">08 · Contact</p>
-      <h2 className="mb-6 text-2xl font-bold text-primary-dark">Let's connect</h2>
-      <div className="mb-6 flex flex-wrap justify-center gap-5">
-        {LINKS.map(([label, href]) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noopener"
-            className="rounded-full border border-stroke px-4 py-2 text-sm font-semibold hover:bg-neutral"
-          >
-            {label}
-          </a>
-        ))}
+    <footer id="contact" className="bg-primary-dark py-12 text-[#dcdcff]">
+      <div className="mx-auto flex max-w-[1100px] flex-col items-center gap-3.5 px-6 text-center">
+        <h2 className="m-0 text-2xl font-bold text-white">Let's connect</h2>
+        <div className="flex flex-wrap justify-center gap-3.5">
+          {LINKS.map(([label, href]) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener"
+              className="rounded-full border border-[#e4e4ff]/35 px-[18px] py-2 text-sm font-semibold text-[#e4e4ff] transition-colors hover:border-accent hover:bg-accent hover:text-primary-dark"
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+        <p className="m-0 font-mono text-[12px] text-[#b7b7e0]">Built with curiosity by Sreenivasan · 2026</p>
       </div>
-      <p className="text-[13px] text-text-soft">Built with curiosity by Sreenivasan · 2026</p>
     </footer>
   )
 }
