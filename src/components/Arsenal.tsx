@@ -41,7 +41,7 @@ function CertCard({
 
 export default function Arsenal() {
   return (
-    <section id="arsenal" className="bg-bg-alt px-6 py-12">
+    <section id="arsenal" className="px-6 py-12">
       <div className="mx-auto max-w-[1100px]">
         <div className="section-head mb-8">
           <div>

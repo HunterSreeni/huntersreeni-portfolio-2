@@ -28,7 +28,7 @@ const GROUPS = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="bg-bg-alt px-6 py-12">
+    <section id="skills" className="px-6 py-12">
       <div className="mx-auto max-w-[1100px]">
         <div className="section-head">
           <div>

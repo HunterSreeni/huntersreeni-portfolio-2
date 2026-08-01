@@ -113,6 +113,11 @@ h1, h2 {
   max-width: 340px;
   margin: 0 auto;
 }
+@media (min-width: 768px) {
+  .evidence-frame {
+    margin: 0 0 0 auto;
+  }
+}
 .evidence-frame::before {
   content: "EXHIBIT A - SUBJECT PHOTO";
   position: absolute;
