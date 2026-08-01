@@ -26,16 +26,16 @@ export default function Hackathons() {
           A GenAI-powered recovery companion and caregiver support app, built solo in one
           hackathon sprint - with a real e2e test suite, not just a demo.
         </p>
-        <div className="mt-2 flex flex-wrap items-center justify-between gap-3 border-t border-dashed border-neutral pt-2.5">
+        <div className="mt-2 border-t border-dashed border-neutral pt-2.5">
           <span className="verdict-pill verdict-pass">
             #6 on the leaderboard · 4 bonus-round rewards
           </span>
-          <div className="flex gap-3.5">
+          <div className="mt-3 flex items-center justify-between">
             <a
               href="https://github.com/HunterSreeni/hack2skill"
               target="_blank"
               rel="noopener"
-              className="text-sm font-bold text-primary"
+              className="rounded-full border border-stroke px-3.5 py-1.5 text-sm font-semibold text-primary"
             >
               GitHub →
             </a>
@@ -43,7 +43,7 @@ export default function Hackathons() {
               href="/certs/promptwars-kerala-2026.pdf"
               target="_blank"
               rel="noopener"
-              className="text-sm font-bold text-primary"
+              className="rounded-full border border-stroke px-3.5 py-1.5 text-sm font-semibold text-primary"
             >
               Certificate →
             </a>

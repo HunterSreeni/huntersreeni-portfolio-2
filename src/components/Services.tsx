@@ -31,7 +31,7 @@ export default function Services() {
         </p>
         <div className="flex flex-wrap items-center gap-6">
           <div className="flex flex-col">
-            <div className="flex flex-wrap items-baseline gap-2.5">
+            <div className="flex flex-wrap items-center gap-3.5">
               <span className="text-[1.1rem] font-semibold text-white/45 line-through">₹1599</span>
               <span className="text-2xl font-extrabold text-accent">₹999</span>
               <span className="verdict-pill verdict-pass">Early bird - 38% off</span>
