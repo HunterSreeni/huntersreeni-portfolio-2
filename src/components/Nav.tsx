@@ -34,7 +34,7 @@ export default function Nav() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke text-primary-dark md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke text-primary-dark transition-colors hover:bg-neutral md:hidden"
         >
           {open ? (
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">

@@ -61,7 +61,7 @@ export default function Builds() {
             <h3 className="m-0 text-lg font-bold text-primary-dark">{b.name}</h3>
             <p className="m-0 text-[0.92rem] leading-relaxed text-text-soft">{b.body}</p>
             <div className="mt-auto border-t border-dashed border-neutral pt-2.5">
-              <a href={b.href} target="_blank" rel="noopener" className="text-sm font-bold text-primary">
+              <a href={b.href} target="_blank" rel="noopener" className="pill-btn">
                 {b.linkLabel}
               </a>
             </div>

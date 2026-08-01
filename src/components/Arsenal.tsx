@@ -30,7 +30,7 @@ function CertCard({
           href={link}
           target="_blank"
           rel="noopener"
-          className="shrink-0 rounded-full border border-stroke px-3.5 py-1.5 text-sm font-semibold text-primary"
+          className="pill-btn shrink-0"
         >
           View
         </a>

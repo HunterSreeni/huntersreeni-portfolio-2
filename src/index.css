@@ -91,6 +91,22 @@ h1, h2 {
 .verdict-partial { background: rgba(204, 204, 255, 0.5); color: var(--color-primary); border: 1px solid var(--color-neutral); }
 .verdict-fail { background: #fde7e7; color: #a33; border: 1px solid #f0b8b8; }
 
+.pill-btn {
+  display: inline-block;
+  border-radius: 999px;
+  border: 1px solid var(--color-stroke);
+  padding: 6px 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.pill-btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-primary-dark);
+}
+
 .run-id {
   font-family: var(--font-mono);
   font-size: 12px;

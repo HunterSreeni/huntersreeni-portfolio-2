@@ -35,7 +35,7 @@ export default function Hackathons() {
               href="https://github.com/HunterSreeni/hack2skill"
               target="_blank"
               rel="noopener"
-              className="rounded-full border border-stroke px-3.5 py-1.5 text-sm font-semibold text-primary"
+              className="pill-btn"
             >
               GitHub →
             </a>
@@ -43,7 +43,7 @@ export default function Hackathons() {
               href="/certs/promptwars-kerala-2026.pdf"
               target="_blank"
               rel="noopener"
-              className="rounded-full border border-stroke px-3.5 py-1.5 text-sm font-semibold text-primary"
+              className="pill-btn"
             >
               Certificate →
             </a>
