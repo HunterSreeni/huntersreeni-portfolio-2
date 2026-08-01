@@ -20,9 +20,8 @@ export default function Hero() {
         </div>
 
         <p className="reveal-hero mx-auto mb-6 max-w-[46ch] text-text-soft md:mx-0">
-          I don't take claims at face value - mine or anyone else's. I test software for a
-          living, break into systems for fun, and put AI tools through the same scrutiny before
-          I trust them with anything real.
+          I test software for a living, break into systems for fun, and use AI like a craftsman
+          uses a tool - deliberately, only when it's the right one, and honestly about when it isn't.
         </p>
 
         <div className="reveal-hero flex flex-wrap justify-center gap-3.5 md:justify-start">
