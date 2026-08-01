@@ -40,7 +40,7 @@ export default function Hero() {
         </div>
 
         <WireGadget
-          className="hero-gadget mx-auto md:mx-0"
+          className="hero-gadget mx-auto hidden md:mx-0 md:block"
           geometry={() => new THREE.DodecahedronGeometry(0.95, 0)}
           color={0x8176ff}
           speed={0.009}

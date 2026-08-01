@@ -1,4 +1,5 @@
 import * as THREE from "three"
+import Section from "./Section"
 import WireGadget from "./WireGadget"
 
 const CARDS = [
@@ -18,20 +19,20 @@ const CARDS = [
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto max-w-[1100px] px-6 py-12">
+    <Section id="about">
       <div className="section-head">
         <div>
           <p className="eyebrow">01 · About</p>
           <h2 className="text-3xl font-bold text-primary-dark">Who am I, actually?</h2>
         </div>
         <WireGadget
-          className="section-gadget"
+          className="section-gadget hidden md:block"
           geometry={() => new THREE.BoxGeometry(1.3, 1.3, 1.3)}
           color={0x000033}
           speed={0.006}
         />
       </div>
-      <div className="reveal-grid mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="reveal-grid mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {CARDS.map((c) => (
           <div key={c.title} className="rounded-2xl border border-neutral bg-white p-6">
             <h3 className="mb-2 text-lg font-bold text-primary">{c.title}</h3>
@@ -39,6 +40,6 @@ export default function About() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   )
 }
