@@ -2,7 +2,6 @@ const LINKS = [
   ["Email", "mailto:huntersreenihs@gmail.com"],
   ["GitHub", "https://github.com/HunterSreeni"],
   ["LinkedIn", "https://www.linkedin.com/in/sreenivasan-s/"],
-  ["Medium", "https://medium.com/@sreenivasan96"],
   ["Instagram", "https://www.instagram.com/huntersreeni"],
 ] as const
 
