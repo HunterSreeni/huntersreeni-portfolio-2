@@ -12,11 +12,11 @@ const BUILDS = [
     href: "https://github.com/HunterSreeni/electron-mcp-browser",
   },
   {
-    caseId: "TC-002 · Custom-LLM-Benchmark",
-    name: "SreeniBench",
-    body: "A practical LLM benchmark spanning security, coding, reasoning, tool use, CI/CD, and supply-chain categories - built to test what actually matters for engineers, not academic trivia. Evolving toward a general-purpose benchmark anyone can run against their own model choices.",
-    linkLabel: "GitHub →",
-    href: "https://github.com/HunterSreeni/Custom-LLM-Benchmark",
+    caseId: "TC-002 · huntersreeni.web.app",
+    name: "Portfolio v1",
+    body: "Built with Perplexity in 2023, before I called myself an AI toolsmith - my first real project built alongside AI. Kept live as a marker of where this started.",
+    linkLabel: "Visit →",
+    href: "https://huntersreeni.web.app",
   },
   {
     caseId: "TC-003 · nithyakarma.org",
