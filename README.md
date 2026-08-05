@@ -1,32 +1,38 @@
-# React + TypeScript + Vite
+# HunterSreeni Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+My personal portfolio - QA Engineer, AI toolsmith, security practitioner. Case studies, certs, and shipped projects, not a resume dump.
 
-Currently, two official plugins are available:
+**Live:** [hunter-sreeni.netlify.app](https://hunter-sreeni.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What's on it
 
-## React Compiler
+- **Arsenal** - security certs (TryHackMe Junior Penetration Tester), AI certs (Claude 101, Claude Code 101), QA certs (LambdaTest Test Automation Professional)
+- **AI Hackathons** - PromptWars: Kerala (Google x Hack2skill), placed #6 on the leaderboard
+- **Builds** - shipped projects with real GitHub links, not screenshots: [Electronium](https://github.com/HunterSreeni/electron-mcp-browser), [nithyakarma.org](https://nithyakarma.org), and a first-AI-project throwback
+- **Skills, Services, Contact** - stack, an AI efficiency audit offering, and real ways to reach me
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Design system
 
-## Expanding the Oxlint configuration
+- Roboto Flex + JetBrains Mono
+- Verification/evidence visual language - case IDs, verdict pills, monospace accents
+- Three.js wireframe gadgets per section, GSAP scroll reveals
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Tech stack
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+- React 19 + TypeScript + Vite 8
+- Tailwind CSS v4
+- Three.js for the wireframe visuals
+- GSAP + ScrollTrigger for scroll animation
+
+## Running locally
+
+```
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+`npm run build` runs `tsc -b && vite build` and outputs to `dist/`.
+
+---
+
+Built by [HunterSreeni](https://hunter-sreeni.netlify.app).
