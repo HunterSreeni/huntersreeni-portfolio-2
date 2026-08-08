@@ -14,7 +14,9 @@ execSync(`npx vite build --ssr src/entry-server.tsx --outDir dist-ssr`, {
 })
 
 const { render } = await import(path.join(ssrOutDir, "entry-server.js"))
-const appHtml = render()
+// Break the rendered markup onto multiple lines (one giant line otherwise) so
+// crawlers/extractors that score content per physical line don't read it as empty.
+const appHtml = render().replace(/>(?=<)/g, ">\n")
 
 const indexPath = path.join(root, "dist", "index.html")
 const html = readFileSync(indexPath, "utf-8")
