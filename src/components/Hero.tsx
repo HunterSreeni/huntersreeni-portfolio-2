@@ -13,23 +13,34 @@ export default function Hero() {
           Sreenivasan Sivakumar
         </h1>
 
-        <div className="reveal-hero relative mb-4 h-8 text-xl font-semibold text-primary">
-          <span className="tagline tagline-1">QA Engineer &amp; Automation Architect</span>
-          <span className="tagline tagline-2">SecOps Enthusiast</span>
-          <span className="tagline tagline-3">AI Engineer - Toolsmith, Not 10x Hype</span>
-        </div>
-
-        <p className="reveal-hero mx-auto mb-6 max-w-[46ch] text-text-soft md:mx-0">
-          I test software for a living, break into systems for fun, and use AI like a craftsman
-          uses a tool - deliberately, only when it's the right one, and honestly about when it isn't.
+        <p className="reveal-hero mb-4 text-xl font-semibold text-primary">
+          SDET | Test Automation Engineer
         </p>
+
+        <p className="reveal-hero mx-auto mb-4 max-w-[46ch] text-text-soft md:mx-0">
+          I build, test, automate, and ship software. ~4 years of professional QA/product
+          experience with hands-on full-stack development, browser automation, Linux, and
+          production side projects.
+        </p>
+
+        <span className="reveal-hero verdict-pill verdict-pass mb-6 inline-block">
+          Open to SDET and Test Automation opportunities
+        </span>
 
         <div className="reveal-hero flex flex-wrap justify-center gap-3.5 md:justify-start">
           <a
-            href="#hackathons"
+            href="#projects"
             className="rounded-full bg-accent px-6 py-3 font-semibold text-primary-dark shadow-[0_4px_14px_rgba(65,254,143,0.35)] transition-transform hover:-translate-y-0.5"
           >
             See what I've built ↓
+          </a>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener"
+            className="rounded-full border-[1.5px] border-stroke px-6 py-3 font-semibold text-primary hover:bg-neutral"
+          >
+            Resume
           </a>
           <a
             href="#contact"

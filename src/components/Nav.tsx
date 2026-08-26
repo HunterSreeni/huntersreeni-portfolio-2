@@ -1,12 +1,11 @@
 import { useState } from "react"
 
 const LINKS = [
-  ["#about", "About"],
-  ["#hackathons", "Hackathons"],
-  ["#arsenal", "Arsenal"],
-  ["#builds", "Builds"],
+  ["#projects", "Projects"],
+  ["#experience", "Experience"],
   ["#skills", "Skills"],
-  ["#services", "Services"],
+  ["#certifications", "Certifications"],
+  ["#about", "About"],
   ["#contact", "Contact"],
 ] as const
 

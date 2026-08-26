@@ -4,16 +4,16 @@ import WireGadget from "./WireGadget"
 
 const CARDS = [
   {
-    title: "The day job",
-    body: "I'm a QA Engineer at XOGO since Sep 2022 - manual and automated testing, cross-platform debugging, and making sure software does what it says before it reaches a customer.",
+    title: "Where it started",
+    body: "QA Engineer since Sep 2022, and the title undersells it - I own release quality end-to-end for XOGO's full stack, not just test-case execution.",
   },
   {
-    title: "The security side",
-    body: "TryHackMe Jr Penetration Tester path, Advent of Cyber 2025 (24 challenges). Breaking things properly makes me better at making sure they don't break in production.",
+    title: "Where it went",
+    body: "That ownership pushed me deeper into automation, Linux, and tooling, then into building and shipping my own software: a community platform, a browser automation server, a published npm package.",
   },
   {
-    title: "The toolsmith angle",
-    body: "Started with Perplexity in March 2023, before the hype cycle. Claude and Claude Code now, real shipped projects, no fake screenshots.",
+    title: "Where it's going",
+    body: "I'm currently building a browser-focused AI product on the side. Still early, more on that once there's something real to show.",
   },
 ]
 
@@ -22,7 +22,7 @@ export default function About() {
     <Section id="about">
       <div className="section-head">
         <div>
-          <p className="eyebrow">01 · About</p>
+          <p className="eyebrow">05 · About</p>
           <h2 className="text-3xl font-bold text-primary-dark">Who am I, actually?</h2>
         </div>
         <WireGadget

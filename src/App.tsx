@@ -3,12 +3,11 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Nav from "./components/Nav"
 import Hero from "./components/Hero"
-import About from "./components/About"
-import Hackathons from "./components/Hackathons"
-import Arsenal from "./components/Arsenal"
-import Builds from "./components/Builds"
+import Projects from "./components/Projects"
+import Experience from "./components/Experience"
 import Skills from "./components/Skills"
-import Services from "./components/Services"
+import Certifications from "./components/Certifications"
+import About from "./components/About"
 import Contact from "./components/Contact"
 
 export default function App() {
@@ -68,12 +67,11 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <About />
-        <Hackathons />
-        <Arsenal />
-        <Builds />
+        <Projects />
+        <Experience />
         <Skills />
-        <Services />
+        <Certifications />
+        <About />
         <Contact />
       </main>
     </>

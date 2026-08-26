@@ -4,12 +4,12 @@ import WireGadget from "./WireGadget"
 
 const GROUPS = [
   {
-    title: "Languages",
-    items: ["JavaScript / TypeScript", "Python", "SQL / PostgreSQL", "Shell / Linux", "PowerShell / Windows"],
+    title: "Software Engineering",
+    items: ["JavaScript / TypeScript", "React", "Vue", "Python", "SQL / PostgreSQL", "Shell / Linux", "Figma", "Supabase", "Netlify"],
   },
   {
-    title: "Tools",
-    items: ["Playwright", "Cypress", "Selenium", "JMeter", "Azure DevOps", "Figma", "Supabase", "Netlify"],
+    title: "Quality Engineering / SDET",
+    items: ["Playwright", "Cypress", "Selenium", "JMeter", "Azure DevOps", "PowerShell / Windows", "Android / ADB"],
   },
   {
     title: "AI & Automation",
@@ -32,7 +32,7 @@ export default function Skills() {
     <Section id="skills">
       <div className="section-head">
         <div>
-          <p className="eyebrow">05 · Skills</p>
+          <p className="eyebrow">03 · Skills</p>
           <h2 className="text-3xl font-bold text-primary-dark">What I work with</h2>
         </div>
         <WireGadget

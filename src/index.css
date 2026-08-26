@@ -30,25 +30,6 @@ h1, h2 {
   margin-top: 2px;
 }
 
-@keyframes taglineCycle {
-  0% { opacity: 0; transform: translateY(6px); }
-  4% { opacity: 1; transform: translateY(0); }
-  30% { opacity: 1; }
-  33% { opacity: 0; transform: translateY(-6px); }
-  100% { opacity: 0; }
-}
-
-.tagline {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  animation: taglineCycle 9s infinite;
-}
-.tagline-1 { animation-delay: 0s; }
-.tagline-2 { animation-delay: 3s; }
-.tagline-3 { animation-delay: 6s; }
-
 .foundations summary { list-style: none; cursor: pointer; }
 .foundations summary::-webkit-details-marker { display: none; }
 .foundations summary::before { content: "+ "; }
