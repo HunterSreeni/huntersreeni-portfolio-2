@@ -8,7 +8,10 @@ const PROJECTS = [
     name: "Nithyakarma",
     status: "Flagship",
     body: "A community daily-ritual tracker, not a solo personal tool - built and maintained end to end for a wider group of practitioners. React + Vite frontend, packaged for Android/PWA via Capacitor, iOS in progress. I own the product decisions, the build, the release, and the debugging.",
-    links: [{ label: "Visit →", href: "https://nithyakarma.org" }],
+    links: [
+      { label: "Visit →", href: "https://nithyakarma.org" },
+      { label: "Play Store →", href: "https://play.google.com/store/apps/details?id=org.nithyakarma.app" },
+    ],
   },
   {
     caseId: "TC-002 · electron-mcp-browser",
