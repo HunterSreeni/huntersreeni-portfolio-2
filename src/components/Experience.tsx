@@ -3,10 +3,12 @@ import Section from "./Section"
 import WireGadget from "./WireGadget"
 
 const BULLETS = [
-  "Sole release gatekeeper for XOGO's full stack: database, backend, web manager, and player clients across Android, iOS, and Amazon Fire. Nothing ships without QA sign-off.",
-  "Own the automation suite end-to-end: build and maintain test coverage, and wire test plans directly into the Azure DevOps pipeline. Cut regression + smoke testing from 2-3 days (manual) to about 1 day, and increased release cadence from once every 2 months to once every 2 weeks.",
-  "Manual and automated testing across every surface: web-based Manager, native player apps (Android, Fire OS, iOS), and hardware devices (Firestick, Chromecast). Systematic, user-POV testing of major feature launches to catch edge-case failures before they ever reach an end user.",
-  "Daily use of shell, ADB, and PowerShell for cross-platform debugging and diagnostics. Shipped Player v4 across Android, Fire OS, and iOS app stores.",
+  "Own testing across XOGO's full stack: database, backend, web manager, and player clients across Android, iOS, and Amazon Fire. Collaborate cross-functionally with dev and product from the requirements stage on major features (shift-left) to shape behavior around real user pain points before build, not just test after.",
+  "Own the automation suite end to end: build and maintain test coverage, and wire test plans directly into the Azure DevOps pipeline (CI/CD).",
+  "Cut pre/post-release regression and smoke testing from 2-3 days (fully manual) to about 1 day (45-min automated regression suite, 45-min automated smoke suite, plus manual testing), and increased release cadence from once every 2 months to once every 2 weeks.",
+  "Manual and automated testing across every surface: web-based Manager, native player apps (Android, Fire OS, iOS), and hardware devices (Firestick, Chromecast), within an Agile development flow.",
+  "API and database-backed functionality testing, defect investigation, and root-cause debugging using shell, ADB, and PowerShell. Systematic, user-POV testing of major feature launches to catch edge-case failures before they ever reach an end user.",
+  "Co-own release sign-off with one other QA engineer - final go/no-go decision-maker on every production release; provide testing strategy and automation direction to the wider QA team.",
 ]
 
 export default function Experience() {
