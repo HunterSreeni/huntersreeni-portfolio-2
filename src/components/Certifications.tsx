@@ -89,6 +89,11 @@ export default function Certifications() {
           issuer="Anthropic · Skilljar · Completed"
           link="/certs/claude-code-101.pdf"
         />
+        <CertCard
+          name="Google Cloud Gen AI Academy APAC 2026 - Cohort 3"
+          issuer="Google Cloud, Hack2skill · Sep 2026"
+          link="/certs/gcloud-genai-academy-apac-c3.pdf"
+        />
       </div>
 
       <div className="cert-group">
