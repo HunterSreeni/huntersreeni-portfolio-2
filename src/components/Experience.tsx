@@ -3,12 +3,12 @@ import Section from "./Section"
 import WireGadget from "./WireGadget"
 
 const BULLETS = [
-  "Own testing across XOGO's full stack: database, backend, web manager, and player clients across Android, iOS, and Amazon Fire. Collaborate cross-functionally with dev and product from the requirements stage on major features (shift-left) to shape behavior around real user pain points before build, not just test after.",
-  "Own the automation suite end to end: build and maintain test coverage, and wire test plans directly into the Azure DevOps pipeline (CI/CD).",
-  "Cut pre/post-release regression and smoke testing from 2-3 days (fully manual) to about 1 day (45-min automated regression suite, 45-min automated smoke suite, plus manual testing), and increased release cadence from once every 2 months to once every 2 weeks.",
-  "Manual and automated testing across every surface: web-based Manager, native player apps (Android, Fire OS, iOS), and hardware devices (Firestick, Chromecast), within an Agile development flow.",
-  "API and database-backed functionality testing, defect investigation, and root-cause debugging using shell, ADB, and PowerShell. Systematic, user-POV testing of major feature launches to catch edge-case failures before they ever reach an end user.",
-  "Co-own release sign-off with one other QA engineer - final go/no-go decision-maker on every production release; provide testing strategy and automation direction to the wider QA team.",
+  "Built the test automation suite from zero on joining. Introduced Cypress and integrated it into the Azure DevOps pipeline, then evaluated and migrated the suite to Playwright as cross-browser requirements grew, for WebKit-engine coverage and cleaner CI integration. Sole owner and maintainer of the automation repo since.",
+  "Replaced a fully manual, multi-day release regression process with an automated suite, enabling a materially faster and more predictable release cadence.",
+  "Own testing across a multi-platform product: database, backend, web application, and native player clients on Android, iOS and Fire OS. Work with development and product from the requirements stage to shape testable acceptance criteria before build, not just test after.",
+  "Manual and automated testing across every surface: web application, native player apps, and streaming hardware, within an Agile development flow.",
+  "API and database-backed functionality testing, defect investigation, and root-cause debugging using shell, ADB and PowerShell. Systematic, user-POV testing of major feature launches to catch edge-case failures before they reach an end user.",
+  "Co-own the release gate end to end: defect triage, release checklist, and one of two final go/no-go decisions on every production release. Onboarded a second automation engineer and set the standards the team writes and reviews tests against.",
 ]
 
 export default function Experience() {
@@ -17,7 +17,7 @@ export default function Experience() {
       <div className="section-head">
         <div>
           <p className="eyebrow">02 · Experience</p>
-          <h2 className="text-3xl font-bold text-primary-dark">QA Engineer, XOGO</h2>
+          <h2 className="text-3xl font-bold text-primary-dark">SDET / QA Engineer, XOGO</h2>
         </div>
         <WireGadget
           className="section-gadget hidden md:block"

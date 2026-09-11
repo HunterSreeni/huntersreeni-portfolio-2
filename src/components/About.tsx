@@ -5,7 +5,7 @@ import WireGadget from "./WireGadget"
 const CARDS = [
   {
     title: "Where it started",
-    body: "QA Engineer since Sep 2022, and the title undersells it - I own release quality end-to-end for XOGO's full stack, not just test-case execution.",
+    body: "QA Engineer since Sep 2022, and the title undersells it - I built the test automation from zero and co-own release sign-off, not just test-case execution.",
   },
   {
     title: "Where it went",
