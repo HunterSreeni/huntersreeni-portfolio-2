@@ -2,7 +2,7 @@
 // dist/index.html so crawlers that don't execute JS still see real content.
 import { execSync } from "node:child_process"
 import { readFileSync, writeFileSync, rmSync } from "node:fs"
-import { fileURLToPath } from "node:url"
+import { fileURLToPath, pathToFileURL } from "node:url"
 import path from "node:path"
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
@@ -13,7 +13,8 @@ execSync(`npx vite build --ssr src/entry-server.tsx --outDir dist-ssr`, {
   stdio: "inherit",
 })
 
-const { render } = await import(path.join(ssrOutDir, "entry-server.js"))
+// file:// URL, not a raw path: Windows paths like D:\... aren't valid import specifiers
+const { render } = await import(pathToFileURL(path.join(ssrOutDir, "entry-server.js")).href)
 // Break the rendered markup onto multiple lines (one giant line otherwise) so
 // crawlers/extractors that score content per physical line don't read it as empty.
 const appHtml = render().replace(/>(?=<)/g, ">\n")

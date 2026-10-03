@@ -1,0 +1,211 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "HunterSreeni" [ref=e5] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e6]: HunterSreeni
+      - navigation [ref=e7]:
+        - link "About" [ref=e8] [cursor=pointer]:
+          - /url: "#about"
+        - link "Hackathons" [ref=e9] [cursor=pointer]:
+          - /url: "#hackathons"
+        - link "Arsenal" [ref=e10] [cursor=pointer]:
+          - /url: "#arsenal"
+        - link "Builds" [ref=e11] [cursor=pointer]:
+          - /url: "#builds"
+        - link "Skills" [ref=e12] [cursor=pointer]:
+          - /url: "#skills"
+        - link "Services" [ref=e13] [cursor=pointer]:
+          - /url: "#services"
+        - link "Contact" [ref=e14] [cursor=pointer]:
+          - /url: "#contact"
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]: "TEST SUITE: huntersreeni.dev - BUILD 2022.09.28"
+        - heading "Sreenivasan Sivakumar" [level=1] [ref=e19]
+        - generic [ref=e20]:
+          - generic [ref=e21]: QA Engineer & Automation Architect
+          - generic [ref=e22]: SecOps Enthusiast
+          - generic [ref=e23]: AI Engineer - Toolsmith, Not 10x Hype
+        - paragraph [ref=e24]: I test software for a living, break into systems for fun, and use AI like a craftsman uses a tool - deliberately, only when it's the right one, and honestly about when it isn't.
+        - generic [ref=e25]:
+          - link "See what I've built ↓" [ref=e26] [cursor=pointer]:
+            - /url: "#hackathons"
+          - link "Get in touch" [ref=e27] [cursor=pointer]:
+            - /url: "#contact"
+      - generic [ref=e30]:
+        - text: EXHIBIT A - SUBJECT PHOTO
+        - img "Sreenivasan Sivakumar" [ref=e31]
+        - generic [ref=e33]: "REF: HS·23.03"
+    - generic [ref=e34]:
+      - generic [ref=e36]:
+        - paragraph [ref=e37]: 01 · About
+        - heading "Who am I, actually?" [level=2] [ref=e38]
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - heading "The day job" [level=3] [ref=e43]
+          - paragraph [ref=e44]: I'm a QA Engineer at XOGO since Sep 2022 - manual and automated testing, cross-platform debugging, and making sure software does what it says before it reaches a customer.
+        - generic [ref=e45]:
+          - heading "The security side" [level=3] [ref=e46]
+          - paragraph [ref=e47]: TryHackMe Jr Penetration Tester path, Advent of Cyber 2025 (24 challenges). Breaking things properly makes me better at making sure they don't break in production.
+        - generic [ref=e48]:
+          - heading "The toolsmith angle" [level=3] [ref=e49]
+          - paragraph [ref=e50]: Started with Perplexity in March 2023, before the hype cycle. Claude and Claude Code now, real shipped projects, no fake screenshots.
+    - generic [ref=e52]:
+      - generic [ref=e54]:
+        - paragraph [ref=e55]: 02 · Built under a clock
+        - heading "AI Hackathons" [level=2] [ref=e56]
+      - generic [ref=e59]:
+        - generic [ref=e60]: "Hackathon · Google × Hack2skill - PromptWars: Kerala"
+        - heading "Steady" [level=3] [ref=e61]
+        - paragraph [ref=e62]: A GenAI-powered recovery companion and caregiver support app, built solo in one hackathon sprint - with a real e2e test suite, not just a demo.
+        - generic [ref=e63]:
+          - generic [ref=e64]: "#6 on the leaderboard · 4 bonus-round rewards"
+          - generic [ref=e65]:
+            - link "GitHub →" [ref=e66] [cursor=pointer]:
+              - /url: https://github.com/HunterSreeni/hack2skill
+            - link "Certificate →" [ref=e67] [cursor=pointer]:
+              - /url: /certs/promptwars-kerala-2026.pdf
+    - generic [ref=e69]:
+      - generic [ref=e71]:
+        - paragraph [ref=e72]: 03 · Credentials
+        - heading "Certifications & credentials" [level=2] [ref=e73]
+      - generic [ref=e76]:
+        - heading "QA" [level=3] [ref=e77]: QA
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]: Test Automation Professional Certificate
+            - generic [ref=e82]: LambdaTest · 2023
+          - link "View" [ref=e83] [cursor=pointer]:
+            - /url: https://www.linkedin.com/learning/certificates/bc8567aef4f76af9d0a3d3ff47b8466c3eccc7e5b5ceb157fb6adfa8537d235c/
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - generic [ref=e86]: Software Testing with Jira & Agile
+            - generic [ref=e87]: Udemy · 2022
+          - link "View" [ref=e88] [cursor=pointer]:
+            - /url: https://www.udemy.com/certificate/UC-a75613d7-6c0f-4ef2-b1a4-859db9eacb3a/
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e91]: Selenium WebDriver with Java - Basics to Advanced + Frameworks
+            - generic [ref=e92]: Udemy · 2022
+          - link "View" [ref=e93] [cursor=pointer]:
+            - /url: https://www.udemy.com/certificate/UC-b92acd90-4895-433f-a025-fbd4d16b7e4e/
+      - generic [ref=e94]:
+        - heading "AI" [level=3] [ref=e95]: AI
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]: Claude 101
+            - generic [ref=e100]: Anthropic · Skilljar · Completed
+          - link "View" [ref=e101] [cursor=pointer]:
+            - /url: /certs/claude-101.pdf
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - generic [ref=e104]: Claude Code 101
+            - generic [ref=e105]: Anthropic · Skilljar · Completed
+          - link "View" [ref=e106] [cursor=pointer]:
+            - /url: /certs/claude-code-101.pdf
+      - generic [ref=e107]:
+        - heading "Security" [level=3] [ref=e108]: Security
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - generic [ref=e112]: Jr Penetration Tester
+            - generic [ref=e113]: TryHackMe · Learning Path · Sep 2025 · 30h 40m
+          - link "View" [ref=e114] [cursor=pointer]:
+            - /url: /certs/thm-jr-pentester.pdf
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - generic [ref=e117]: Advent of Cyber 2025
+            - generic [ref=e118]: TryHackMe · 24 challenges completed · Dec 2025
+          - link "View" [ref=e119] [cursor=pointer]:
+            - /url: /certs/thm-advent-of-cyber-2025.pdf
+    - generic [ref=e121]:
+      - generic [ref=e123]:
+        - paragraph [ref=e124]: 04 · Shipped work
+        - heading "Built, not just proposed" [level=2] [ref=e125]
+      - generic [ref=e128]:
+        - article [ref=e129]:
+          - generic [ref=e130]: Flagship
+          - generic [ref=e131]: TC-001 · electron-mcp-browser
+          - heading "Electronium" [level=3] [ref=e132]
+          - paragraph [ref=e133]: A local-first MCP server that bridges AI assistants to a real, logged-in Chrome session over Chrome DevTools Protocol - built because Playwright-driven browsers kept getting blocked by Cloudflare and other anti-bot layers. Any MCP-compatible AI can use it, not just mine.
+          - link "GitHub →" [ref=e135] [cursor=pointer]:
+            - /url: https://github.com/HunterSreeni/electron-mcp-browser
+        - article [ref=e136]:
+          - generic [ref=e137]: TC-002 · Custom-LLM-Benchmark
+          - heading "SreeniBench" [level=3] [ref=e138]
+          - paragraph [ref=e139]: A practical LLM benchmark spanning security, coding, reasoning, tool use, CI/CD, and supply-chain categories - built to test what actually matters for engineers, not academic trivia. Evolving toward a general-purpose benchmark anyone can run against their own model choices.
+          - link "GitHub →" [ref=e141] [cursor=pointer]:
+            - /url: https://github.com/HunterSreeni/Custom-LLM-Benchmark
+        - article [ref=e142]:
+          - generic [ref=e143]: TC-003 · nithyakarma.org
+          - heading "Nithyakarma" [level=3] [ref=e144]
+          - paragraph [ref=e145]: A community project, not a solo personal tool - daily-ritual tracking (PWA + Android) built and maintained for a wider group of practitioners.
+          - link "Visit →" [ref=e147] [cursor=pointer]:
+            - /url: https://nithyakarma.org
+    - generic [ref=e149]:
+      - generic [ref=e151]:
+        - paragraph [ref=e152]: 05 · Skills
+        - heading "What I work with" [level=2] [ref=e153]
+      - generic [ref=e156]:
+        - generic [ref=e157]:
+          - heading "Languages" [level=3] [ref=e158]
+          - list [ref=e159]:
+            - listitem [ref=e160]: JavaScript / TypeScript
+            - listitem [ref=e161]: Python
+            - listitem [ref=e162]: SQL / PostgreSQL
+            - listitem [ref=e163]: Shell / Linux
+            - listitem [ref=e164]: PowerShell / Windows
+        - generic [ref=e165]:
+          - heading "Tools" [level=3] [ref=e166]
+          - list [ref=e167]:
+            - listitem [ref=e168]: Playwright
+            - listitem [ref=e169]: Cypress
+            - listitem [ref=e170]: Selenium
+            - listitem [ref=e171]: JMeter
+            - listitem [ref=e172]: Azure DevOps
+            - listitem [ref=e173]: Figma
+            - listitem [ref=e174]: Supabase
+            - listitem [ref=e175]: Netlify
+        - generic [ref=e176]:
+          - heading "AI & Automation" [level=3] [ref=e177]
+          - list [ref=e178]:
+            - listitem [ref=e179]: Claude · Anthropic
+            - listitem [ref=e180]: Claude Code
+            - listitem [ref=e181]: MCP
+            - listitem [ref=e182]: Gemini · Google
+            - listitem [ref=e183]: Ollama
+            - listitem [ref=e184]: Local LLMs
+            - listitem [ref=e185]: n8n
+            - listitem [ref=e186]: Hermes Agent
+            - listitem [ref=e187]: OpenClaw
+    - generic [ref=e188]:
+      - generic [ref=e190]:
+        - paragraph [ref=e191]: 06 · Services
+        - heading "AI Efficiency Audit" [level=2] [ref=e192]
+      - generic [ref=e195]:
+        - paragraph [ref=e196]: Most AI usage is wasteful - too many tokens spent for too little output, prompts that fight the model instead of working with it, workflows that would take half the time with the right setup.
+        - paragraph [ref=e197]: "Solo builder, a team, or a whole business - doesn't matter. I audit how you're actually using AI - Claude or otherwise - and show you where the waste is: token spend, prompt structure, tool/agent design, and where AI shouldn't be used at all. The goal is less spend, more signal, and no gimmicks."
+        - generic [ref=e198]:
+          - generic [ref=e199]:
+            - generic [ref=e200]:
+              - generic [ref=e201]: ₹1599
+              - generic [ref=e202]: ₹999
+              - generic [ref=e203]: Early bird - 38% off
+            - generic [ref=e204]: 30-minute audit call
+          - link "Book a call →" [ref=e205] [cursor=pointer]:
+            - /url: https://cal.com/huntersreeni-hs-vzp44e/30min
+    - generic [ref=e207]:
+      - heading "Let's connect" [level=2] [ref=e208]
+      - generic [ref=e209]:
+        - link "Email" [ref=e210] [cursor=pointer]:
+          - /url: mailto:huntersreenihs@gmail.com
+        - link "GitHub" [ref=e211] [cursor=pointer]:
+          - /url: https://github.com/HunterSreeni
+        - link "LinkedIn" [ref=e212] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/sreenivasan-s/
+        - link "Medium" [ref=e213] [cursor=pointer]:
+          - /url: https://medium.com/@sreenivasan96
+        - link "Instagram" [ref=e214] [cursor=pointer]:
+          - /url: https://www.instagram.com/huntersreeni
+      - paragraph [ref=e215]: Built with curiosity by Sreenivasan · 2026

@@ -14,14 +14,24 @@ const PROJECTS = [
     ],
   },
   {
-    caseId: "TC-002 · electron-mcp-browser",
+    caseId: "TC-002 · nithyakarma-quality-lab",
+    name: "Nithyakarma Quality Lab",
+    status: "Flagship",
+    body: "The same 39 end-to-end test cases written twice - Playwright (TypeScript) and Selenium (Java + TestNG) - against my live Nithyakarma app. Logged-in tests use a Supabase admin magic link instead of fighting the Cloudflare captcha, and the captcha itself is covered by negative UI and API tests. GitHub Actions runs both suites on every push and publishes a side-by-side results page.",
+    links: [
+      { label: "GitHub →", href: "https://github.com/HunterSreeni/nithyakarma-quality-lab" },
+      { label: "Live results →", href: "https://huntersreeni.github.io/nithyakarma-quality-lab/" },
+    ],
+  },
+  {
+    caseId: "TC-003 · electron-mcp-browser",
     name: "Electronium",
     status: "Flagship",
     body: "A local-first MCP server that bridges AI assistants to a real, logged-in Chrome session over Chrome DevTools Protocol - built because Playwright-driven browsers kept getting blocked by Cloudflare and other anti-bot layers. Any MCP-compatible AI can use it, not just mine.",
     links: [{ label: "GitHub →", href: "https://github.com/HunterSreeni/electron-mcp-browser" }],
   },
   {
-    caseId: "TC-003 · Google × Hack2skill",
+    caseId: "TC-004 · Google × Hack2skill",
     name: "Steady",
     status: undefined,
     body: "A GenAI-powered recovery companion and caregiver support app, built solo in one hackathon sprint - with a real end-to-end test suite, not just a demo. Placed #6 on the leaderboard with 4 bonus-round rewards.",
@@ -31,7 +41,7 @@ const PROJECTS = [
     ],
   },
   {
-    caseId: "TC-004 · npm",
+    caseId: "TC-005 · npm",
     name: "mypensieve",
     status: "Sunset",
     body: "A general-purpose autonomous CLI agent with persistent memory across sessions, built during the early wave of AI coding agents. Published to npm with 22 versions shipped through an automated GitHub Actions release pipeline. Retired now that the space has more mature tooling, kept here as proof of a real, versioned release process.",
