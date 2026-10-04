@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quality Lab DSA Case Study | Sreenivasan Sivakumar</title>
+<meta name="description" content="Where data structures and algorithms actually show up in a 39-test Playwright + Selenium suite running against a live app, with the code, the impact and the measured numbers." />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --primary: #333366; --primary-dark: #000033; --primary-light: #6666cc;
+    --accent: #41fe8f; --neutral: #ccccff; --stroke: #8176ff;
+    --bg: #fafafd; --bg-alt: #f1f0fb; --text: #1a1a2e; --text-soft: #4a4a68;
+    --code-bg: #0f0f2a; --code-ink: #e6e6ff;
+    --sans: "Roboto Flex", system-ui, sans-serif; --mono: "JetBrains Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 var(--sans); }
+  a { color: var(--primary-light); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+  header.top { border-bottom: 1px solid var(--neutral); background: var(--bg); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; gap: 12px; }
+  .back { font-family: var(--mono); font-size: 13px; color: var(--primary); text-decoration: none; }
+  .back:hover { color: var(--primary-light); }
+  .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--primary); display: flex; align-items: center; gap: 8px; margin: 0 0 10px; }
+  .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(65,254,143,.2); }
+  .hero { padding: 48px 0 28px; }
+  h1 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.15; margin: 0 0 14px; color: var(--primary-dark); letter-spacing: -.01em; }
+  .lede { font-size: 1.08rem; color: var(--text-soft); max-width: 720px; margin: 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 28px 0 8px; }
+  .stat { background: #fff; border: 1px solid var(--neutral); border-radius: 14px; padding: 14px 16px; }
+  .stat b { display: block; font-size: 1.6rem; color: var(--primary-dark); font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .85rem; color: var(--text-soft); }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .pill-btn { display: inline-block; border-radius: 999px; border: 1px solid var(--stroke); padding: 6px 14px; font-size: .875rem; font-weight: 600; color: var(--primary); text-decoration: none; background: #fff; }
+  .pill-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--primary-dark); }
+  section.block { padding: 36px 0; border-top: 1px dashed var(--neutral); }
+  h2 { font-size: 1.5rem; margin: 0 0 8px; color: var(--primary-dark); }
+  .sub { color: var(--text-soft); margin: 0 0 20px; max-width: 760px; }
+  .note { background: var(--bg-alt); border: 1px solid var(--neutral); border-left: 4px solid var(--stroke); border-radius: 10px; padding: 14px 16px; color: var(--text-soft); font-size: .95rem; }
+  .note b { color: var(--primary-dark); }
+  .toc { columns: 2 240px; gap: 24px; padding-left: 20px; margin: 0; }
+  .toc li { margin: 4px 0; break-inside: avoid; }
+  .case { background: #fff; border: 1px solid var(--neutral); border-radius: 16px; padding: 22px; margin: 0 0 18px; }
+  .case-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 14px; margin-bottom: 12px; }
+  .case h3 { margin: 0; font-size: 1.2rem; color: var(--primary-dark); }
+  .tag { font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 3px 10px; border-radius: 999px; background: rgba(129,118,255,.12); color: var(--primary); border: 1px solid var(--stroke); white-space: nowrap; }
+  dl.facts { display: grid; grid-template-columns: 110px 1fr; gap: 8px 14px; margin: 0 0 14px; }
+  dl.facts dt { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--primary); padding-top: 3px; }
+  dl.facts dd { margin: 0; }
+  @media (max-width: 560px) { dl.facts { grid-template-columns: 1fr; gap: 2px; } dl.facts dd { margin-bottom: 8px; } }
+  .where { font-family: var(--mono); font-size: 12.5px; color: var(--text-soft); margin: 0 0 6px; overflow-wrap: anywhere; }
+  pre { background: var(--code-bg); color: var(--code-ink); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font: 13px/1.55 var(--mono); margin: 0 0 12px; }
+  code { font-family: var(--mono); font-size: .9em; }
+  :not(pre) > code { background: var(--bg-alt); border: 1px solid var(--neutral); border-radius: 5px; padding: 1px 5px; overflow-wrap: anywhere; }
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--neutral); border-radius: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--bg-alt); vertical-align: top; }
+  thead th { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--primary); background: var(--bg-alt); position: sticky; top: 0; }
+  td.id { font-family: var(--mono); color: var(--text-soft); white-space: nowrap; }
+  .fit { font-family: var(--mono); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+  .fit.direct { background: rgba(65,254,143,.2); color: #0a7a45; border: 1px solid rgba(65,254,143,.6); }
+  .fit.analogy { background: rgba(129,118,255,.12); color: var(--primary); border: 1px solid var(--stroke); }
+  .fit.none { background: var(--bg-alt); color: var(--text-soft); border: 1px solid var(--neutral); }
+  .bars { display: grid; gap: 10px; margin: 6px 0 14px; }
+  .bar-row { display: grid; grid-template-columns: 190px 1fr 64px; align-items: center; gap: 10px; font-size: .88rem; }
+  .bar-track { background: var(--bg-alt); border-radius: 6px; height: 14px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--primary-light); border-radius: 6px; }
+  .bar-fill.slow { background: #b9b4e8; }
+  .bar-row b { font-family: var(--mono); font-size: 12.5px; text-align: right; font-variant-numeric: tabular-nums; }
+  @media (max-width: 560px) { .bar-row { grid-template-columns: 1fr 56px; } .bar-row .bar-track { grid-column: 1 / -1; grid-row: 2; } }
+  .unused { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; padding: 0; list-style: none; }
+  .unused li { font-family: var(--mono); font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px dashed var(--neutral); color: var(--text-soft); }
+  footer { padding: 36px 0 56px; border-top: 1px solid var(--neutral); color: var(--text-soft); font-size: .9rem; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="back" href="/#projects">&larr; hunter-sreeni / projects</a>
+    <span class="tag">TC-002 &middot; case study</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="eyebrow">Nithyakarma Quality Lab</p>
+    <h1>Where DSA actually shows up in a real test suite</h1>
+    <p class="lede">I wrote the same 39 end-to-end test cases twice, in Playwright (TypeScript) and Selenium (Java + TestNG), against my live Nithyakarma app. Then I went back through every file and asked a plain question: which data structures and algorithms are really in here, and what did each one fix? This page is the answer, with the code, the impact, and the places where the honest answer is "none".</p>
+    <div class="stats">
+      <div class="stat"><b>39</b><span>test cases, written in both frameworks</span></div>
+      <div class="stat"><b>~57%</b><span>less wait per save check (533 ms to 228 ms)</span></div>
+      <div class="stat"><b>4</b><span>dependency-ordered stages in a DAG</span></div>
+      <div class="stat"><b>12</b><span>DSA ideas found in the real code</span></div>
+    </div>
+    <div class="pills">
+      <a class="pill-btn" href="https://github.com/HunterSreeni/nithyakarma-quality-lab" target="_blank" rel="noopener">GitHub &rarr;</a>
+      <a class="pill-btn" href="https://huntersreeni.github.io/nithyakarma-quality-lab/" target="_blank" rel="noopener">Live results &rarr;</a>
+      <a class="pill-btn" href="#map">Test case to problem map &darr;</a>
+    </div>
+  </div>
+
+  <section class="block">
+    <p class="eyebrow">Scope</p>
+    <h2>What this is, and what it is not</h2>
+    <p class="sub">A test suite is not a LeetCode set, so not every topic belongs in it. Forcing a heap or a DP table into a login test would make the suite worse. What I wanted to show is that the topics that did appear were picked because they solved a real problem: test ordering, flaky waits, stale caches, merging two result formats.</p>
+    <div class="note"><b>Not used anywhere in this suite:</b> nothing here needed them, so I am not claiming them.
+      <ul class="unused">
+        <li>sorting</li><li>binary search</li><li>heap</li><li>explicit stack / queue</li><li>linked list</li><li>trie</li><li>two pointers</li><li>sliding window</li><li>dynamic programming</li><li>backtracking</li><li>greedy</li><li>union-find</li><li>LRU cache</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow">Contents</p>
+    <ol class="toc">
+      <li><a href="#dag">Test ordering as a DAG</a></li>
+      <li><a href="#latch">Event-driven wait vs polling</a></li>
+      <li><a href="#join">Hash map join of two result formats</a></li>
+      <li><a href="#count">Frequency counting for the dashboard</a></li>
+      <li><a href="#dfs">Recursive DFS over the report tree</a></li>
+      <li><a href="#dom">The DOM is a tree: leaves and parents</a></li>
+      <li><a href="#cache">Memoization and cache invalidation</a></li>
+      <li><a href="#ordered">Ordered maps (and the LRU connection)</a></li>
+      <li><a href="#table">Data-driven tables and boundary values</a></li>
+      <li><a href="#set">Set equality</a></li>
+      <li><a href="#search">Linear search with early exit</a></li>
+      <li><a href="#inverse">Inverse operations keep live data clean</a></li>
+      <li><a href="#map">All 39 test cases mapped to problems</a></li>
+    </ol>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow">The 12 ideas</p>
+
+    <article class="case" id="dag">
+      <div class="case-head"><h3>1. Test ordering as a DAG (topological order)</h3><span class="tag">Graph</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>All tests share one live account. If logout runs early it can revoke the session every other test is using. If the settings tests run alongside the read-only checks, they change the data those checks read.</dd>
+        <dt>Idea</dt><dd>Each stage is a node and each "must run after" rule is an edge. Playwright runs projects in topological order of that graph. CI does the same thing one level up with job <code>needs:</code>.</dd>
+        <dt>Impact</dt><dd>Login happens once, and logout is guaranteed to run last. Selenium copies the same order with TestNG <code>&lt;test&gt;</code> blocks, so both suites see the account in the same state.</dd>
+        <dt>Cost</dt><dd>Topological sort is O(V + E). Here V = 5 projects, so the value is correctness, not speed.</dd>
+      </dl>
+      <p class="where">playwright-ts/playwright.config.ts &middot; .github/workflows/tests.yml</p>
+<pre>setup ──► app ──► settings ──► logout        (Playwright projects)
+playwright ──► selenium ──► dashboard        (CI jobs)
+
+{ name: 'settings', dependencies: ['app'] },
+{ name: 'logout',   dependencies: ['settings'] },</pre>
+    </article>
+
+    <article class="case" id="latch">
+      <div class="case-head"><h3>2. Event-driven wait instead of polling</h3><span class="tag">Concurrency</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>The app updates the screen first and saves in the background. Reloading before the save request goes out cancels it, and the test then sees the old value. Selenium's default <code>WebDriverWait</code> polls every 500 ms, so it kept noticing the save late.</dd>
+        <dt>Idea</dt><dd>Stop asking "is it done yet?" on a timer. Subscribe to the network over WebDriver BiDi and let the PATCH response itself release a <code>CountDownLatch</code>.</dd>
+        <dt>Impact</dt><dd>Each save check dropped from about 533 ms to about 228 ms, close to Playwright's built-in <code>waitForResponse</code>. The reload that verifies each step only runs after the save has landed.</dd>
+        <dt>Cost</dt><dd>Polling has worst-case lag equal to the poll interval. An event has none, so you wait only as long as the server takes.</dd>
+      </dl>
+      <div class="bars" role="img" aria-label="Wait per save: WebDriverWait polling 533 ms, CountDownLatch 228 ms, Playwright waitForResponse 210 ms">
+        <div class="bar-row"><span>WebDriverWait (500 ms poll)</span><div class="bar-track"><div class="bar-fill slow" style="width:100%"></div></div><b>~533 ms</b></div>
+        <div class="bar-row"><span>BiDi + CountDownLatch</span><div class="bar-track"><div class="bar-fill" style="width:42.8%"></div></div><b>~228 ms</b></div>
+        <div class="bar-row"><span>Playwright waitForResponse</span><div class="bar-track"><div class="bar-fill" style="width:39.4%"></div></div><b>~210 ms</b></div>
+      </div>
+      <p class="where">selenium-java/.../pages/ProfilePage.java &middot; clickAndWaitForSave()</p>
+<pre>CountDownLatch saved = new CountDownLatch(1);
+network.onResponseCompleted(response -&gt; {
+    if ("PATCH".equals(response.getRequest().getMethod())
+            &amp;&amp; response.getRequest().getUrl().contains("/rest/v1/profiles")
+            &amp;&amp; response.getResponseData().getStatus() / 100 == 2) {
+        saved.countDown();
+    }
+});
+click.run();
+if (!saved.await(10, TimeUnit.SECONDS)) throw new TimeoutException(...);</pre>
+    </article>
+
+    <article class="case" id="join">
+      <div class="case-head"><h3>3. Hash map join of two result formats</h3><span class="tag">Hash map</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>Playwright writes JSON and Selenium writes Surefire XML. Each test is named differently in each one. The results page needs one row per test case showing both outcomes.</dd>
+        <dt>Idea</dt><dd>Index each report once into a <code>Map</code> keyed by test name, then walk the 39 test cases and look each one up. This is the Two Sum trick: trade a little memory for constant-time lookups.</dd>
+        <dt>Impact</dt><dd>The dashboard can say "same result in both frameworks" and highlight any test where they disagree.</dd>
+        <dt>Cost</dt><dd>O(n + m) to build and join, instead of O(n &times; m) for a nested loop.</dd>
+      </dl>
+      <p class="where">dashboard/build.mjs</p>
+<pre>const pw = new Map();                       // title -&gt; { status, ms }
+pw.set(spec.title, { status, ms: last?.duration ?? 0 });
+
+const rows = cases.map(c =&gt; ({ ...c, pw: pw.get(c.playwright) ?? null, se: findSe(c.selenium) }));</pre>
+    </article>
+
+    <article class="case" id="count">
+      <div class="case-head"><h3>4. Frequency counting for the summary cards</h3><span class="tag">Counting</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>Each framework card shows passed, failed, skipped, flaky and "not run" totals.</dd>
+        <dt>Idea</dt><dd>One pass over the rows, incrementing a counter per status. It is the same pattern as character frequency or Python's <code>Counter</code>. A missing result counts as its own bucket instead of crashing the build.</dd>
+        <dt>Impact</dt><dd>One function serves both frameworks, and a test that silently did not run shows up as "missing" instead of being dropped.</dd>
+        <dt>Cost</dt><dd>O(n) time, O(k) space for k statuses.</dd>
+      </dl>
+<pre>const tally = side =&gt; {
+    const t = { passed: 0, failed: 0, skipped: 0, flaky: 0, missing: 0 };
+    for (const r of rows) t[r[side]?.status ?? 'missing']++;
+    return t;
+};</pre>
+    </article>
+
+    <article class="case" id="dfs">
+      <div class="case-head"><h3>5. Recursive DFS over the report tree</h3><span class="tag">Tree</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>Playwright's JSON report is a tree: files contain describe blocks, which contain more describe blocks and then specs. The depth is not fixed.</dd>
+        <dt>Idea</dt><dd>A depth-first walk that handles the specs at the current node and then recurses into each child suite, the same shape as Maximum Depth of a Binary Tree, but for an n-ary tree.</dd>
+        <dt>Impact</dt><dd>Nested <code>test.describe</code> blocks just work. Adding a new level of grouping to the tests does not break the dashboard.</dd>
+        <dt>Cost</dt><dd>O(nodes). Recursion depth equals nesting depth, which is about 3 here.</dd>
+      </dl>
+<pre>const walk = suite =&gt; {
+    for (const spec of suite.specs ?? []) { /* record each test */ }
+    (suite.suites ?? []).forEach(walk);
+};
+report.suites.forEach(walk);</pre>
+    </article>
+
+    <article class="case" id="dom">
+      <div class="case-head"><h3>6. The DOM is a tree: leaves and parents</h3><span class="tag">Tree</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>Several parts of the app have no roles or labels to target: history dates, kalam times, stat tiles.</dd>
+        <dt>Idea</dt><dd>Use tree vocabulary directly. <code>div[not(*)]</code> means "leaf nodes only", <code>..</code> is the parent pointer, and <code>h1 + *</code> is the next sibling.</dd>
+        <dt>Impact</dt><dd>Matching the date regex against leaves only avoids false hits on container divs, whose text includes all their children.</dd>
+        <dt>Cost</dt><dd>One scan of the subtree under <code>main</code>.</dd>
+      </dl>
+      <p class="where">selenium-java/.../pages/HistoryPage.java</p>
+<pre>private final By leafDivs = By.xpath("//main//div[not(*)]");   // leaves of the DOM tree
+driver.findElements(leafDivs).stream().map(BasePage::text).filter(t -&gt; t.matches(ENTRY_DATE)).toList();</pre>
+    </article>
+
+    <article class="case" id="cache">
+      <div class="case-head"><h3>7. Memoization and cache invalidation</h3><span class="tag">Caching</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>Logging in through the UI is blocked by a Cloudflare captcha, and minting a session for every test is slow. Separately, the app paints a cached profile before the server copy arrives, so a check can pass on stale data.</dd>
+        <dt>Idea</dt><dd>Compute the session once and reuse it. Playwright saves it to a <code>storageState</code> file in a setup project. Selenium keeps it in a lazily filled, <code>synchronized</code> static field. For the stale profile, invalidate the cache key, reload, and wait until the app rewrites it from the server.</dd>
+        <dt>Impact</dt><dd>One admin magic-link call per run instead of one per test, and no false passes from stale cached values.</dd>
+        <dt>Not an LRU</dt><dd>It is a cache with exactly one entry, no eviction policy, and the token's own expiry as a TTL. An LRU cache needs a fixed capacity and evicts the least recently used entry, and nothing here does that.</dd>
+      </dl>
+<pre>// Selenium: compute once, reuse (memoized singleton)
+public static synchronized String sharedSessionJson() {
+    if (shared == null) shared = createSessionJson();
+    return shared;
+}
+
+// Playwright: invalidate, reload, wait for the fresh write
+await page.evaluate(key =&gt; localStorage.removeItem(key), ProfilePage.CACHE_KEY);
+await page.reload();
+await page.waitForFunction(key =&gt; localStorage.getItem(key) !== null, ProfilePage.CACHE_KEY);</pre>
+    </article>
+
+    <article class="case" id="ordered">
+      <div class="case-head"><h3>8. Ordered maps (and the LRU connection)</h3><span class="tag">Hash map + linked list</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>The navigation test visits all six tabs, and the failure report should list them in the same order as on screen.</dd>
+        <dt>Idea</dt><dd>Java's <code>LinkedHashMap</code> is a hash map with a doubly linked list running through its entries, so iteration follows insertion order. TypeScript objects with string keys keep insertion order too.</dd>
+        <dt>Impact</dt><dd>The tab tests run in a stable order every time, so a failure always means the same thing.</dd>
+        <dt>Interview link</dt><dd>This is the exact structure behind LRU Cache (#146). Construct it with <code>accessOrder = true</code> and override <code>removeEldestEntry</code>, and you have an LRU. The suite uses insertion order only.</dd>
+      </dl>
+<pre>public static final Map&lt;String, String&gt; TABS = new LinkedHashMap&lt;&gt;();
+static { TABS.put("Today", "/"); TABS.put("Learning", "/learning"); /* ... */ }</pre>
+    </article>
+
+    <article class="case" id="table">
+      <div class="case-head"><h3>9. Data-driven tables and boundary values</h3><span class="tag">2D array</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>Seven login validation checks would mean seven nearly identical test bodies.</dd>
+        <dt>Idea</dt><dd>One table of rows (an <code>Object[][]</code> TestNG DataProvider and a TypeScript array), one test body. The cases sit exactly at the boundary: a 7-character password must fail and an 8-character password must pass.</dd>
+        <dt>Impact</dt><dd>Adding a case is one line. The 7 vs 8 pair is the off-by-one check that catches a <code>&lt;</code> written where <code>&lt;=</code> was meant.</dd>
+      </dl>
+<pre>{ "password 7 chars",  "password", "1234567",  "tooShort" },
+{ "8 char password",   "password", "12345678", "valid"    },</pre>
+    </article>
+
+    <article class="case" id="set">
+      <div class="case-head"><h3>10. Set equality</h3><span class="tag">Set</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>"Shows three kalams" is not enough. A fourth unexpected kalam, or the right count with a wrong name, should both fail.</dd>
+        <dt>Idea</dt><dd>Build a map of name to time from the page and assert its key set equals the expected set exactly. The Learning test does the same with a count plus membership for all 14 practices.</dd>
+        <dt>Impact</dt><dd>Catches extras and missing items in one assertion, with a readable diff.</dd>
+      </dl>
+<pre>assertThat(kalams).containsOnlyKeys("Rahu Kalam", "Yamagandam", "Gulika Kalam");</pre>
+    </article>
+
+    <article class="case" id="search">
+      <div class="case-head"><h3>11. Linear search with early exit (and a trade-off I kept)</h3><span class="tag">Search</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>Find the first anushtanam not yet tracked, and match Selenium results whose names carry DataProvider parameters.</dd>
+        <dt>Idea</dt><dd>Stream, filter, and stop at the first hit (<code>findFirst</code>, <code>anyMatch</code>). For Selenium names, a prefix match, because <code>validation[bad email format, ...]</code> starts with the key stored in the test case list.</dd>
+        <dt>Trade-off</dt><dd>The prefix lookup scans the whole map, so the join is O(n &times; m) for those rows. With 39 rows that is about 1,500 string checks, which is nothing. If this grew to thousands of tests I would normalise the keys once and go back to O(1) lookups.</dd>
+      </dl>
+<pre>const findSe = name =&gt; {
+    for (const [key, value] of se) if (key === name || key.startsWith(name)) return value;
+    return null;
+};</pre>
+    </article>
+
+    <article class="case" id="inverse">
+      <div class="case-head"><h3>12. Inverse operations keep live data clean</h3><span class="tag">State</span></div>
+      <dl class="facts">
+        <dt>Problem</dt><dd>These tests run against production with a real account. Any test that changes data has to leave it exactly as it found it.</dd>
+        <dt>Idea</dt><dd>Every write is paired with its inverse: switch a setting and switch it back, add a child and remove it, Next and then Previous. The start state is read first, and the two targets are chosen with a swap so the test works whichever option is currently on.</dd>
+        <dt>Impact</dt><dd>The suite can run on every push without slowly corrupting the account. The two writes with no inverse in the app yet are opt-in only and stay skipped in CI.</dd>
+      </dl>
+<pre>const [from, to] = await profile.isChipOn(a) ? [a, b] : [b, a];
+for (const target of [to, from]) { /* click, wait for the save, verify after a fresh reload */ }</pre>
+    </article>
+  </section>
+
+  <section class="block" id="map">
+    <p class="eyebrow">Traceability</p>
+    <h2>All 39 test cases mapped to a problem pattern</h2>
+    <p class="sub">For each test case: the technique the code actually uses, and the classic interview problem with the same core idea. <span class="fit direct">Direct</span> means the same data structure or algorithm. <span class="fit analogy">Analogy</span> means the same way of thinking. <span class="fit none">None</span> means it is a plain UI check, and I would rather say so than stretch it.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>TC</th><th>Test case</th><th>Technique in the code</th><th>Problem pattern</th><th>Fit</th></tr></thead>
+        <tbody>
+          <tr><td class="id">TC-01</td><td>Login page renders all elements</td><td>Table of expected elements, <code>anyMatch</code> scan per item</td><td>Two Sum (#1): existence lookup. A set would make it O(1), but at about 10 items a scan is fine</td><td><span class="fit analogy">Analogy</span></td></tr>
+          <tr><td class="id">TC-02 to TC-08</td><td>Login validation (7 cases)</td><td>Data-driven table (<code>Object[][]</code>), boundary values 7 vs 8</td><td>"Write the test cases for this function" (boundary values, equivalence classes); off-by-one thinking from First and Last Position (#34)</td><td><span class="fit analogy">Analogy</span></td></tr>
+          <tr><td class="id">TC-09</td><td>Captcha blocks an automated login</td><td>Wait, check, retry the click once, then assert</td><td>Retry with backoff</td><td><span class="fit analogy">Analogy</span></td></tr>
+          <tr><td class="id">TC-10</td><td>API rejects login without a captcha token</td><td>Assert status and a JSON field</td><td>Validate a JSON response against an expected shape</td><td><span class="fit analogy">Analogy</span></td></tr>
+          <tr><td class="id">TC-11</td><td>Header: logo, tabs, streak, logout</td><td>Expected map of tab to href compared with the DOM</td><td>Deep-compare / diff two objects</td><td><span class="fit direct">Direct</span></td></tr>
+          <tr><td class="id">TC-12</td><td>Every tab navigates to its page</td><td><code>LinkedHashMap</code> iterated in insertion order</td><td>LRU Cache (#146): same hash map + doubly linked list structure</td><td><span class="fit direct">Direct</span></td></tr>
+          <tr><td class="id">TC-13</td><td>Greeting shows today in IST</td><td>Timezone-aware date formatting</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-14</td><td>Panchangam box and three kalams</td><td>Build map of name to time, <code>containsOnlyKeys</code></td><td>Valid Anagram (#242): exact equality of two collections</td><td><span class="fit direct">Direct</span></td></tr>
+          <tr><td class="id">TC-15</td><td>Family switcher shows Me and Add child</td><td>Visibility checks</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-16</td><td>Add child opens the family section</td><td>URL match after click</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-17</td><td>Streak card: streak, best, punya</td><td>Several regex patterns over one block of text</td><td>Parse a log file and extract fields</td><td><span class="fit analogy">Analogy</span></td></tr>
+          <tr><td class="id">TC-18</td><td>Anushtanams list: slots and Mark Done</td><td>Filter cards by a child element's text</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-19</td><td>Mark one sandhya slot (opt-in)</td><td>Regex extract the count, skip if already done</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-20</td><td>Picker disables tracked practices</td><td>Verifies the app refuses duplicates</td><td>Contains Duplicate (#217): set membership</td><td><span class="fit direct">Direct</span></td></tr>
+          <tr><td class="id">TC-21</td><td>Search filters the picker</td><td>Substring filter, count equals 1</td><td>- (a linear scan here; at scale this becomes a Trie)</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-22</td><td>Add an untracked anushtanam (opt-in)</td><td><code>filter</code> then <code>findFirst</code>, then membership re-check</td><td>First Unique Character (#387): first item matching a condition, early exit</td><td><span class="fit analogy">Analogy</span></td></tr>
+          <tr><td class="id">TC-23</td><td>Lists every read-along practice</td><td>Count equals 14, plus each name present</td><td>Intersection of Two Arrays (#349) / set equality</td><td><span class="fit direct">Direct</span></td></tr>
+          <tr><td class="id">TC-24</td><td>Hanuman Chalisa reader, language switch</td><td>One-hot toggle state</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-25</td><td>History: family switcher and dated entries</td><td><code>div[not(*)]</code>: leaf nodes of the DOM tree</td><td>Maximum Depth of Binary Tree (#104): tree traversal, leaf = no children</td><td><span class="fit direct">Direct</span></td></tr>
+          <tr><td class="id">TC-26</td><td>Sabha defaults to this week</td><td>Text and class checks</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-27</td><td>Week / Month / Kids switch the board</td><td>State switches and returns to start</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-28</td><td>Calendar day view details and kalams</td><td>Soft assertions in a loop</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-29</td><td>Next and Previous move a day and back</td><td>Inverse operations return to the start state</td><td>Valid Parentheses (#20): every open matched by a close returns to balance</td><td><span class="fit analogy">Analogy</span></td></tr>
+          <tr><td class="id">TC-30</td><td>Week and Month views</td><td>Exclusive selection</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-31</td><td>Profile: name, tier progress, stats</td><td>Regex on text (8-char hex invite code)</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-32</td><td>Save enabled only after the name changes</td><td>Dirty check: current value compared to original</td><td>Deep-compare / diff two objects</td><td><span class="fit analogy">Analogy</span></td></tr>
+          <tr><td class="id">TC-33</td><td>Delete account disabled without the email</td><td>Guard condition check</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-34</td><td>Footer links</td><td>Map of link text to href compared with the DOM</td><td>Deep-compare / diff two objects</td><td><span class="fit direct">Direct</span></td></tr>
+          <tr><td class="id">TC-35</td><td>Add a child and remove it</td><td>Unique name from a timestamp, paired add/remove</td><td>-</td><td><span class="fit none">None</span></td></tr>
+          <tr><td class="id">TC-36, TC-37</td><td>Tradition / marital status round-trips</td><td>Swap by destructuring, event wait, poll until a fresh reload agrees</td><td>Retry with backoff (bounded polling)</td><td><span class="fit analogy">Analogy</span></td></tr>
+          <tr><td class="id">TC-38</td><td>Leaderboard opt-in round-trip</td><td>Same pattern for a boolean</td><td>Retry with backoff (bounded polling)</td><td><span class="fit analogy">Analogy</span></td></tr>
+          <tr><td class="id">TC-39</td><td>Logout returns to the login page</td><td>Runs last, as the final node of the project DAG</td><td>Course Schedule (#207): topological sort</td><td><span class="fit direct">Direct</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:14px">Outside the test cases, the dashboard build adds three more direct matches: the result join is Two Sum (#1), the status totals are frequency counting (Top K Frequent Elements, #347, without the heap), and the report walk is tree DFS (#104).</p>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow">Takeaway</p>
+    <h2>What I would say in an interview</h2>
+    <p class="sub">The useful DSA in test automation is mostly about time and state: running things in the right order, waiting on events instead of guessing with timers, not trusting cached data, and leaving shared data exactly as you found it. The classic structures (hash maps, sets, trees, graphs) show up as the tools for those jobs. I can point to the line where each one is used, and I can also point to the places where a plain check was the right call.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Sreenivasan Sivakumar &middot; <a href="/">hunter-sreeni.netlify.app</a> &middot; <a href="https://github.com/HunterSreeni/nithyakarma-quality-lab" target="_blank" rel="noopener">source on GitHub</a></div>
+</footer>
+</body>
+</html>

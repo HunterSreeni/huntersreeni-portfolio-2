@@ -21,6 +21,7 @@ const PROJECTS = [
     links: [
       { label: "GitHub →", href: "https://github.com/HunterSreeni/nithyakarma-quality-lab" },
       { label: "Live results →", href: "https://huntersreeni.github.io/nithyakarma-quality-lab/" },
+      { label: "DSA case study →", href: "/case-studies/quality-lab-dsa.html" },
     ],
   },
   {
@@ -86,9 +87,9 @@ export default function Projects() {
             <span className="font-mono text-[11px] text-text-soft">{p.caseId}</span>
             <h3 className="m-0 text-lg font-bold text-primary-dark">{p.name}</h3>
             <p className="m-0 text-[0.92rem] leading-relaxed text-text-soft">{p.body}</p>
-            <div className="mt-auto flex gap-2.5 border-t border-dashed border-neutral pt-2.5">
+            <div className="mt-auto flex flex-wrap gap-2.5 border-t border-dashed border-neutral pt-2.5">
               {p.links.map((l) => (
-                <a key={l.label} href={l.href} target="_blank" rel="noopener" className="pill-btn">
+                <a key={l.label} href={l.href} target="_blank" rel="noopener" className="pill-btn whitespace-nowrap">
                   {l.label}
                 </a>
               ))}
