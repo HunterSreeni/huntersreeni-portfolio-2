@@ -4,12 +4,12 @@ import WireGadget from "./WireGadget"
 
 const GROUPS = [
   {
-    title: "Software Engineering",
-    items: ["JavaScript / TypeScript", "React", "Vue", "Python", "SQL / PostgreSQL", "Shell / Linux", "Figma", "Supabase", "Netlify"],
+    title: "Quality Engineering / SDET",
+    items: ["Playwright", "API testing", "SQL / DB validation", "CI · Azure DevOps", "GitHub Actions", "Cypress", "Selenium (Java)", "JMeter", "PowerShell / Windows", "Android / ADB"],
   },
   {
-    title: "Quality Engineering / SDET",
-    items: ["Playwright", "Cypress", "Selenium", "JMeter", "Azure DevOps", "PowerShell / Windows", "Android / ADB"],
+    title: "Software Engineering",
+    items: ["JavaScript / TypeScript", "Java", "React", "Vue", "Python", "SQL / PostgreSQL", "Shell / Linux", "Figma", "Supabase", "Netlify"],
   },
   {
     title: "AI & Automation",

@@ -7,7 +7,7 @@ const BUILDS = [
     caseId: "TC-001 · electron-mcp-browser",
     name: "Electronium",
     flagship: true,
-    body: "A local-first MCP server that bridges AI assistants to a real, logged-in Chrome session over Chrome DevTools Protocol - built because Playwright-driven browsers kept getting blocked by Cloudflare and other anti-bot layers. Any MCP-compatible AI can use it, not just mine.",
+    body: "A local-first MCP server that bridges AI assistants to a real, logged-in Chrome session over Chrome DevTools Protocol. Any MCP-compatible AI can use it, not just mine.",
     linkLabel: "GitHub →",
     href: "https://github.com/HunterSreeni/electron-mcp-browser",
   },

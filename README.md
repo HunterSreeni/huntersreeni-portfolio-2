@@ -1,15 +1,19 @@
 # HunterSreeni Portfolio
 
-My personal portfolio - QA Engineer, AI toolsmith, security practitioner. Case studies, certs, and shipped projects, not a resume dump.
+Personal SDET portfolio for Sreenivasan Sivakumar. It presents test automation, release-quality ownership, and selected product and developer-tooling projects.
 
 **Live:** [hunter-sreeni.netlify.app](https://hunter-sreeni.netlify.app)
 
-## What's on it
+## Highlights
 
-- **Arsenal** - security certs (TryHackMe Junior Penetration Tester), AI certs (Claude 101, Claude Code 101), QA certs (LambdaTest Test Automation Professional)
-- **AI Hackathons** - PromptWars: Kerala (Google x Hack2skill), placed #6 on the leaderboard
-- **Builds** - shipped projects with real GitHub links, not screenshots: [Electronium](https://github.com/HunterSreeni/electron-mcp-browser), [nithyakarma.org](https://nithyakarma.org), and a first-AI-project throwback
-- **Skills, Services, Contact** - stack, an AI efficiency audit offering, and real ways to reach me
+- **Nithyakarma Quality Lab** - the same end-to-end test cases implemented in Playwright with TypeScript and Selenium with Java/TestNG, with CI and published comparison results.
+- **Nithyakarma** - a live React, Vite, Capacitor, and PWA product used to demonstrate product delivery and test ownership.
+- **Electronium** - local-first browser tooling built on the Chrome DevTools Protocol.
+- **Experience and skills** - SDET-relevant framework ownership, API and database validation, CI, accessibility, visual regression, and device testing.
+
+## Development approach
+
+The projects use AI-assisted workflows for research, implementation, and failure analysis. Technical design, validation, debugging, and the code presented as finished work remain the owner's responsibility.
 
 ## Design system
 

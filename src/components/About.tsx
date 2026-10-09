@@ -13,7 +13,11 @@ const CARDS = [
   },
   {
     title: "Where it's going",
-    body: "I'm currently building a browser-focused AI product on the side. Still early, more on that once there's something real to show.",
+    body: "Deeper into SDET work: API automation, CI and framework design. Quality Lab is where I try those ideas in public first.",
+  },
+  {
+    title: "How I build",
+    body: "I use AI-assisted workflows for research, implementation and failure analysis, while retaining responsibility for the design, validation and code I ship.",
   },
 ]
 
@@ -32,7 +36,7 @@ export default function About() {
           speed={0.006}
         />
       </div>
-      <div className="reveal-grid mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="reveal-grid mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {CARDS.map((c) => (
           <div key={c.title} className="rounded-2xl border border-neutral bg-white p-6">
             <h3 className="mb-2 text-lg font-bold text-primary">{c.title}</h3>

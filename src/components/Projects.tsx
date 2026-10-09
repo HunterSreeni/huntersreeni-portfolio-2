@@ -4,7 +4,18 @@ import WireGadget from "./WireGadget"
 
 const PROJECTS = [
   {
-    caseId: "TC-001 · nithyakarma.org",
+    caseId: "TC-001 · nithyakarma-quality-lab",
+    name: "Nithyakarma Quality Lab",
+    status: "Flagship",
+    body: "The same 39 end-to-end test cases written twice - Playwright (TypeScript) and Selenium (Java + TestNG) - against my live Nithyakarma app. Covers UI flows plus negative UI and API cases. GitHub Actions runs both suites on every push and publishes a side-by-side results page.",
+    links: [
+      { label: "GitHub →", href: "https://github.com/HunterSreeni/nithyakarma-quality-lab" },
+      { label: "Live results →", href: "https://huntersreeni.github.io/nithyakarma-quality-lab/" },
+      { label: "DSA case study →", href: "/case-studies/quality-lab-dsa.html" },
+    ],
+  },
+  {
+    caseId: "TC-002 · nithyakarma.org",
     name: "Nithyakarma",
     status: "Flagship",
     body: "A community daily-ritual tracker, not a solo personal tool - built and maintained end to end for a wider group of practitioners. React + Vite frontend, packaged for Android/PWA via Capacitor, iOS in progress. I own the product decisions, the build, the release, and the debugging.",
@@ -14,21 +25,10 @@ const PROJECTS = [
     ],
   },
   {
-    caseId: "TC-002 · nithyakarma-quality-lab",
-    name: "Nithyakarma Quality Lab",
-    status: "Flagship",
-    body: "The same 39 end-to-end test cases written twice - Playwright (TypeScript) and Selenium (Java + TestNG) - against my live Nithyakarma app. Logged-in tests use a Supabase admin magic link instead of fighting the Cloudflare captcha, and the captcha itself is covered by negative UI and API tests. GitHub Actions runs both suites on every push and publishes a side-by-side results page.",
-    links: [
-      { label: "GitHub →", href: "https://github.com/HunterSreeni/nithyakarma-quality-lab" },
-      { label: "Live results →", href: "https://huntersreeni.github.io/nithyakarma-quality-lab/" },
-      { label: "DSA case study →", href: "/case-studies/quality-lab-dsa.html" },
-    ],
-  },
-  {
     caseId: "TC-003 · electron-mcp-browser",
     name: "Electronium",
     status: "Flagship",
-    body: "A local-first MCP server that bridges AI assistants to a real, logged-in Chrome session over Chrome DevTools Protocol - built because Playwright-driven browsers kept getting blocked by Cloudflare and other anti-bot layers. Any MCP-compatible AI can use it, not just mine.",
+    body: "A local-first MCP server that bridges AI assistants to a real, logged-in Chrome session over Chrome DevTools Protocol. Any MCP-compatible AI can use it, not just mine.",
     links: [{ label: "GitHub →", href: "https://github.com/HunterSreeni/electron-mcp-browser" }],
   },
   {

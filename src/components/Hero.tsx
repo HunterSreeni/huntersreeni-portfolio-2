@@ -7,7 +7,7 @@ export default function Hero() {
     <section id="top" className="mx-auto grid max-w-[1100px] grid-cols-1 items-center gap-12 px-6 py-14 pb-4 md:grid-cols-[1.2fr_0.8fr]">
       <div className="text-center md:text-left">
         <div className="reveal-hero run-id">
-          TEST SUITE: <b>huntersreeni.dev</b> - BUILD 2022.09.28
+          TEST SUITE: <b>SDET PORTFOLIO</b> - QA SINCE 2022
         </div>
         <h1 className="reveal-hero mb-1 text-4xl font-bold text-primary-dark sm:text-5xl">
           Sreenivasan Sivakumar
@@ -18,9 +18,9 @@ export default function Hero() {
         </p>
 
         <p className="reveal-hero mx-auto mb-4 max-w-[46ch] text-text-soft md:mx-0">
-          I build, test, automate, and ship software. ~4 years of professional QA/product
-          experience with hands-on full-stack development, browser automation, Linux, and
-          production side projects.
+          I build and maintain test automation with Playwright and TypeScript, run it in CI,
+          and co-own release sign-off. ~4 years of QA experience across web, API, database
+          and native clients.
         </p>
 
         <span className="reveal-hero verdict-pill verdict-pass mb-6 inline-block">
@@ -32,7 +32,7 @@ export default function Hero() {
             href="#projects"
             className="rounded-full bg-accent px-6 py-3 font-semibold text-primary-dark shadow-[0_4px_14px_rgba(65,254,143,0.35)] transition-transform hover:-translate-y-0.5"
           >
-            See what I've built ↓
+            View automation work ↓
           </a>
           <a
             href="/resume.pdf"

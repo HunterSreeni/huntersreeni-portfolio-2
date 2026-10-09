@@ -6,7 +6,7 @@ const BULLETS = [
   "Built the test automation suite from zero on joining. Introduced Cypress and integrated it into the Azure DevOps pipeline, then evaluated and migrated the suite to Playwright as cross-browser requirements grew, for WebKit-engine coverage and cleaner CI integration. Sole owner and maintainer of the automation repo since.",
   "Replaced a fully manual, multi-day release regression process with an automated suite, enabling a materially faster and more predictable release cadence.",
   "Own testing across a multi-platform product: database, backend, web application, and native player clients on Android, iOS and Fire OS. Work with development and product from the requirements stage to shape testable acceptance criteria before build, not just test after.",
-  "Manual and automated testing across every surface: web application, native player apps, and streaming hardware, within an Agile development flow.",
+  "Automated coverage across the web application, API and database layers. Native player apps and streaming hardware are tested manually against a priority device matrix, within an Agile development flow.",
   "API and database-backed functionality testing, defect investigation, and root-cause debugging using shell, ADB and PowerShell. Systematic, user-POV testing of major feature launches to catch edge-case failures before they reach an end user.",
   "Co-own the release gate end to end: defect triage, release checklist, and one of two final go/no-go decisions on every production release. Onboarded a second automation engineer and set the standards the team writes and reviews tests against.",
 ]
@@ -17,7 +17,7 @@ export default function Experience() {
       <div className="section-head">
         <div>
           <p className="eyebrow">02 · Experience</p>
-          <h2 className="text-3xl font-bold text-primary-dark">SDET / QA Engineer, XOGO</h2>
+          <h2 className="text-3xl font-bold text-primary-dark">QA Engineer I, XOGO</h2>
         </div>
         <WireGadget
           className="section-gadget hidden md:block"
