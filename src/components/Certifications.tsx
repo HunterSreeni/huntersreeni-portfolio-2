@@ -62,6 +62,11 @@ export default function Certifications() {
           QA
         </h3>
         <CertCard
+          name="DevOps Mastery: Jenkins, Kubernetes, Docker & ArgoCD"
+          issuer="Udemy · Oct 2026 · 6.5h"
+          link="/certs/udemy-devops-mastery.pdf"
+        />
+        <CertCard
           name="Test Automation Professional Certificate"
           issuer="LambdaTest · 2023"
           link="https://www.linkedin.com/learning/certificates/bc8567aef4f76af9d0a3d3ff47b8466c3eccc7e5b5ceb157fb6adfa8537d235c/"
