@@ -98,12 +98,12 @@ export default function Certifications() {
         </h3>
         <CertCard
           name="Jr Penetration Tester"
-          issuer="TryHackMe · Learning Path · Sep 2025 · 30h 40m"
+          issuer="TryHackMe · Learning Path · Sep 2025"
           link="/certs/thm-jr-pentester.pdf"
         />
         <CertCard
           name="Advent of Cyber 2025"
-          issuer="TryHackMe · 24 challenges completed · Dec 2025"
+          issuer="TryHackMe · Dec 2025"
           link="/certs/thm-advent-of-cyber-2025.pdf"
         />
       </div>
