@@ -71,16 +71,6 @@ export default function Certifications() {
           issuer="LambdaTest · 2023"
           link="https://www.linkedin.com/learning/certificates/bc8567aef4f76af9d0a3d3ff47b8466c3eccc7e5b5ceb157fb6adfa8537d235c/"
         />
-        <CertCard
-          name="Software Testing with Jira & Agile"
-          issuer="Udemy · 2022"
-          link="https://www.udemy.com/certificate/UC-a75613d7-6c0f-4ef2-b1a4-859db9eacb3a/"
-        />
-        <CertCard
-          name="Selenium WebDriver with Java - Basics to Advanced + Frameworks"
-          issuer="Udemy · 2022"
-          link="https://www.udemy.com/certificate/UC-b92acd90-4895-433f-a025-fbd4d16b7e4e/"
-        />
       </div>
 
       <div className="cert-group mb-9">

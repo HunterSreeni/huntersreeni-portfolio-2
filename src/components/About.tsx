@@ -9,7 +9,7 @@ const CARDS = [
   },
   {
     title: "Where it went",
-    body: "That ownership pushed me deeper into automation, Linux, and tooling, then into building and shipping my own software: a community platform, a browser automation server, a published npm package.",
+    body: "That ownership pushed me deeper into automation, Linux, and tooling, then into building and shipping my own software: a community app live on Google Play, a quality lab and a delivery pipeline.",
   },
   {
     title: "Where it's going",
@@ -17,7 +17,7 @@ const CARDS = [
   },
   {
     title: "How I build",
-    body: "I use AI-assisted workflows for research, implementation and failure analysis, while retaining responsibility for the design, validation and code I ship.",
+    body: "AI tools I use daily: Claude Code, MCP, Codex, Ollama and Gemini.",
   },
 ]
 

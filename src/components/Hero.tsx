@@ -7,20 +7,20 @@ export default function Hero() {
     <section id="top" className="mx-auto grid max-w-[1100px] grid-cols-1 items-center gap-12 px-6 py-14 pb-4 md:grid-cols-[1.2fr_0.8fr]">
       <div className="text-center md:text-left">
         <div className="reveal-hero run-id">
-          TEST SUITE: <b>SDET PORTFOLIO</b> - QA SINCE 2022
+          TEST SUITE: <b>TEST AUTOMATION PORTFOLIO</b> - QA SINCE 2022
         </div>
         <h1 className="reveal-hero mb-1 text-4xl font-bold text-primary-dark sm:text-5xl">
           Sreenivasan Sivakumar
         </h1>
 
         <p className="reveal-hero mb-4 text-xl font-semibold text-primary">
-          SDET | Test Automation Engineer
+          QA &amp; Test Automation Engineer
         </p>
 
         <p className="reveal-hero mx-auto mb-4 max-w-[46ch] text-text-soft md:mx-0">
-          I build and maintain test automation with Playwright and TypeScript, run it in CI,
-          and co-own release sign-off. ~4 years of QA experience across web, API, database
-          and native clients.
+          4 years in digital signage. I build and maintain test automation with Playwright
+          (TypeScript, 3 years) and Cypress (JavaScript, 1 year) in Azure DevOps CI, and co-own
+          release sign-off across web, API, database and a device matrix of native clients.
         </p>
 
         <span className="reveal-hero verdict-pill verdict-pass mb-6 inline-block">

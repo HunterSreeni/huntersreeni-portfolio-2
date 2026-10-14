@@ -4,26 +4,20 @@ import WireGadget from "./WireGadget"
 
 const GROUPS = [
   {
-    title: "Quality Engineering / SDET",
-    items: ["Playwright", "API testing", "SQL / DB validation", "CI · Azure DevOps", "GitHub Actions", "Cypress", "Selenium (Java)", "JMeter", "PowerShell / Windows", "Android / ADB"],
+    title: "Test Automation · Production",
+    items: ["Playwright (TypeScript)", "Cypress (JavaScript)", "API testing (Playwright, Postman, Bruno)", "JMeter", "Page Object Model", "Visual regression", "Accessibility (WCAG)", "Manual & exploratory testing", "Device-matrix testing"],
   },
   {
-    title: "Software Engineering",
-    items: ["JavaScript / TypeScript", "Java", "React", "Vue", "Python", "SQL / PostgreSQL", "Shell / Linux", "Figma", "Supabase", "Netlify"],
+    title: "Tooling, Languages & Platforms · Production",
+    items: ["Azure DevOps", "Git / GitHub", "Jira", "Agile / Scrum", "Figma (design review)", "TypeScript", "JavaScript", "SQL (MS SQL Server)", "Android / ADB", "iOS", "Windows", "Fire OS", "Shell / Linux", "PowerShell"],
   },
   {
-    title: "AI & Automation",
-    items: [
-      "Claude · Anthropic",
-      "Claude Code",
-      "MCP",
-      "Gemini · Google",
-      "Ollama",
-      "Local LLMs",
-      "n8n",
-      "Hermes Agent",
-      "OpenClaw",
-    ],
+    title: "Project experience",
+    items: ["Selenium WebDriver + TestNG (Java)", "REST Assured", "Python", "Docker", "Jenkins", "GitHub Actions", "Kubernetes", "React", "Vue", "Supabase"],
+  },
+  {
+    title: "AI tools",
+    items: ["Claude Code", "MCP", "Codex", "Ollama", "Gemini"],
   },
 ]
 
@@ -42,7 +36,7 @@ export default function Skills() {
           speed={0.008}
         />
       </div>
-      <div className="reveal-grid mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="reveal-grid mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
         {GROUPS.map((g) => (
           <div key={g.title} className="rounded-2xl border border-neutral bg-white p-6">
             <h3 className="mb-3 text-lg font-bold text-primary-dark">{g.title}</h3>

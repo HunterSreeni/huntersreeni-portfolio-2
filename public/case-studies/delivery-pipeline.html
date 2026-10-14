@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Delivery Pipeline Case Study | Sreenivasan Sivakumar</title>
+<meta name="description" content="A Java + Selenium + REST Assured suite delivered through Docker, a Kubernetes Job on kind and Jenkins, against a live production app, with secrets kept out of every layer." />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --primary: #333366; --primary-dark: #000033; --primary-light: #6666cc;
+    --accent: #41fe8f; --neutral: #ccccff; --stroke: #8176ff;
+    --bg: #fafafd; --bg-alt: #f1f0fb; --text: #1a1a2e; --text-soft: #4a4a68;
+    --code-bg: #0f0f2a; --code-ink: #e6e6ff;
+    --sans: "Roboto Flex", system-ui, sans-serif; --mono: "JetBrains Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 var(--sans); }
+  a { color: var(--primary-light); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+  header.top { border-bottom: 1px solid var(--neutral); background: var(--bg); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; gap: 12px; }
+  .back { font-family: var(--mono); font-size: 13px; color: var(--primary); text-decoration: none; }
+  .back:hover { color: var(--primary-light); }
+  .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--primary); display: flex; align-items: center; gap: 8px; margin: 0 0 10px; }
+  .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(65,254,143,.2); }
+  .hero { padding: 48px 0 28px; }
+  h1 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.15; margin: 0 0 14px; color: var(--primary-dark); letter-spacing: -.01em; }
+  .lede { font-size: 1.08rem; color: var(--text-soft); max-width: 720px; margin: 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 28px 0 8px; }
+  .stat { background: #fff; border: 1px solid var(--neutral); border-radius: 14px; padding: 14px 16px; }
+  .stat b { display: block; font-size: 1.6rem; color: var(--primary-dark); font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .85rem; color: var(--text-soft); }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .pill-btn { display: inline-block; border-radius: 999px; border: 1px solid var(--stroke); padding: 6px 14px; font-size: .875rem; font-weight: 600; color: var(--primary); text-decoration: none; background: #fff; }
+  .pill-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--primary-dark); }
+  section.block { padding: 36px 0; border-top: 1px dashed var(--neutral); }
+  h2 { font-size: 1.5rem; margin: 0 0 8px; color: var(--primary-dark); }
+  .sub { color: var(--text-soft); margin: 0 0 20px; max-width: 760px; }
+  .note { background: var(--bg-alt); border: 1px solid var(--neutral); border-left: 4px solid var(--stroke); border-radius: 10px; padding: 14px 16px; color: var(--text-soft); font-size: .95rem; }
+  .note b { color: var(--primary-dark); }
+  .toc { columns: 2 240px; gap: 24px; padding-left: 20px; margin: 0; }
+  .toc li { margin: 4px 0; break-inside: avoid; }
+  .case { background: #fff; border: 1px solid var(--neutral); border-radius: 16px; padding: 22px; margin: 0 0 18px; }
+  .case-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 14px; margin-bottom: 12px; }
+  .case h3 { margin: 0; font-size: 1.2rem; color: var(--primary-dark); }
+  .tag { font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 3px 10px; border-radius: 999px; background: rgba(129,118,255,.12); color: var(--primary); border: 1px solid var(--stroke); white-space: nowrap; }
+  dl.facts { display: grid; grid-template-columns: 110px 1fr; gap: 8px 14px; margin: 0 0 14px; }
+  dl.facts dt { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--primary); padding-top: 3px; }
+  dl.facts dd { margin: 0; }
+  @media (max-width: 560px) { dl.facts { grid-template-columns: 1fr; gap: 2px; } dl.facts dd { margin-bottom: 8px; } }
+  pre { background: var(--code-bg); color: var(--code-ink); border-radius: 10px; padding: 14px 16px; overflow-x: auto; font: 13px/1.55 var(--mono); margin: 0 0 12px; }
+  code { font-family: var(--mono); font-size: .9em; }
+  :not(pre) > code { background: var(--bg-alt); border: 1px solid var(--neutral); border-radius: 5px; padding: 1px 5px; overflow-wrap: anywhere; }
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--neutral); border-radius: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--bg-alt); vertical-align: top; }
+  thead th { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--primary); background: var(--bg-alt); position: sticky; top: 0; }
+  td.id { font-family: var(--mono); color: var(--text-soft); white-space: nowrap; }
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  figure.wide { grid-column: 1 / -1; }
+  figure { margin: 0; background: #fff; border: 1px solid var(--neutral); border-radius: 14px; overflow: hidden; }
+  figure img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--neutral); }
+  figcaption { padding: 10px 14px; font-size: .88rem; color: var(--text-soft); }
+  figcaption b { color: var(--primary-dark); }
+  ul.plain { margin: 0; padding-left: 20px; }
+  ul.plain li { margin: 6px 0; }
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  footer { padding: 36px 0 56px; border-top: 1px solid var(--neutral); color: var(--text-soft); font-size: .9rem; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="back" href="/#projects">&larr; hunter-sreeni / projects</a>
+    <span class="tag">TC-002 &middot; case study</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="eyebrow">Nithyakarma Delivery Pipeline</p>
+    <h1>Shipping a test suite safely through Docker, Kubernetes and Jenkins</h1>
+    <p class="lede">Writing tests was the easy half. This project is about the other half: getting a Java + Selenium + REST Assured suite to run the same way on my laptop, in a container, as a Kubernetes Job and from a Jenkins build, against my live Nithyakarma app and its production database. The service-role key never touches Git, an image layer, a log or a report, and every write the suite makes is opt-in and undone afterwards.</p>
+    <div class="stats">
+      <div class="stat"><b>15</b><span>tests: UI, API and database (RLS) checks</span></div>
+      <div class="stat"><b>23 / 20 / 3</b><span>run / passed / skipped on a default Jenkins build</span></div>
+      <div class="stat"><b>~80 s</b><span>full suite as a Kubernetes Job with a Chrome sidecar</span></div>
+      <div class="stat"><b>11</b><span>real problems logged with cause, fix and proof</span></div>
+    </div>
+    <div class="pills">
+      <a class="pill-btn" href="https://github.com/HunterSreeni/nithyakarma-delivery-pipeline" target="_blank" rel="noopener">GitHub &rarr;</a>
+      <a class="pill-btn" href="https://github.com/HunterSreeni/nithyakarma-delivery-pipeline/blob/main/BUGLOG.md" target="_blank" rel="noopener">Full bug log &rarr;</a>
+      <a class="pill-btn" href="#broke">What broke &darr;</a>
+    </div>
+  </div>
+
+  <section class="block">
+    <p class="eyebrow">Scope</p>
+    <h2>What this is, and what it is not</h2>
+    <p class="sub">My other project, Quality Lab, asks "how do Playwright and Selenium compare on the same 39 tests?". This one asks a different question: once a suite exists, how do you deliver it? A smaller, curated set of 15 tests is built into one image, run inside a cluster, wired into CI, and handled with the care that production data and real secrets need.</p>
+    <div class="note"><b>Honest limits:</b> the cluster is local (kind on Docker Desktop), Jenkins runs on the controller, and reports leave the pod through a hostPath mount, which is a local-only workaround. The section <a href="#prod">What changes in production</a> lists what I would do differently on a real cluster.</div>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow">Contents</p>
+    <ol class="toc">
+      <li><a href="#arch">Architecture</a></li>
+      <li><a href="#stages">Why each pipeline stage exists</a></li>
+      <li><a href="#safety">Testing against production safely</a></li>
+      <li><a href="#secrets">Where each secret lives</a></li>
+      <li><a href="#dag">The DAG demo suite</a></li>
+      <li><a href="#broke">Six things that broke</a></li>
+      <li><a href="#evidence">Evidence: a green and a red build</a></li>
+      <li><a href="#prod">What changes in production</a></li>
+      <li><a href="#talk">What I would say in an interview</a></li>
+    </ol>
+  </section>
+
+  <section class="block" id="arch">
+    <p class="eyebrow">Architecture</p>
+    <h2>From a push to a test report</h2>
+    <p class="sub">Jenkins runs as a container on the same Docker network as the kind cluster, and drives Docker Desktop through the mounted Docker socket. Each build makes one image, runs it as a Job, and collects the reports before the Job is deleted.</p>
+<pre>GitHub (public repo)
+   │
+   ▼
+Jenkins  (container on the "kind" Docker network)
+   1  Checkout
+   2  docker build nk-runner:&lt;build&gt;  ──►  kind load into the cluster
+   3  Secret nk-env  (from Jenkins credentials)
+      ConfigMap nk-run  (SUITE, E2E_ALLOW_DATA_WRITES, DEMO_EXPECTED_FAILURE)
+   4  kubectl apply Job ──► stream logs ──► wait for Complete OR Failed
+   post: copy reports off the node ──► JUnit + archive ──► THEN delete the Job
+   │
+   ▼
+kind cluster, namespace nk-e2e
+   Job nk-e2e   (backoffLimit 0, activeDeadlineSeconds 1800)
+     runner : mvn test -Dsuite=$(SUITE)  ──►  RemoteWebDriver localhost:4444
+     chrome : selenium/standalone-chrome as a native sidecar
+              (initContainer + restartPolicy Always, startupProbe on /status)
+   │
+   ▼
+internet ──► Nithyakarma PWA (Netlify) + Supabase (REST, Auth, RPC)</pre>
+  </section>
+
+  <section class="block" id="stages">
+    <p class="eyebrow">Design</p>
+    <h2>Why each pipeline stage exists</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stage</th><th>What it does</th><th>Why it is there</th></tr></thead>
+        <tbody>
+          <tr><td class="id">Build runner image</td><td><code>docker build</code>: dependencies in one layer, test code compiled in the next</td><td>One immutable image per build (<code>nk-runner:&lt;build&gt;</code>). A compile error fails here, before any browser starts. The image holds no secrets: <code>.dockerignore</code> blocks <code>.env*</code>, checked with <code>docker history</code>.</td></tr>
+          <tr><td class="id">Secret + run settings</td><td>Jenkins credentials become a Kubernetes Secret, build parameters become a ConfigMap</td><td>Secrets stay masked in Jenkins and only exist at runtime. Run settings are plain config, so they are visible and easy to change per build.</td></tr>
+          <tr><td class="id">Run tests in kind</td><td>Apply the Job, stream the runner's logs, wait until it is Complete or Failed</td><td><code>kubectl wait --for=condition=complete</code> on its own hangs until timeout when a Job fails, so the wait checks for either condition.</td></tr>
+          <tr><td class="id">post (always)</td><td>Copy reports off the node, publish JUnit, archive, then delete the Job</td><td>Reports survive a red build, and the Job is deleted only after its evidence is safe. <code>backoffLimit: 0</code> means a failing suite is never retried, so writes are never repeated.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block" id="safety">
+    <p class="eyebrow">Safety</p>
+    <h2>Testing against production without hurting it</h2>
+    <p class="sub">There is no separate staging copy of the app, so the suite runs against real data. That shaped most of the decisions.</p>
+    <div class="two">
+      <div class="case">
+        <h3>Who and what the tests touch</h3>
+        <ul class="plain">
+          <li>Two dedicated accounts only: A (a test account) and B (my own), with A's starting state recorded as a baseline.</li>
+          <li>Writes are off by default everywhere. With writes off, the three write tests show as SKIPPED, not passed.</li>
+          <li>Every write is undone as the data's owner, and the cleanup checks itself. If a restore is refused, the test fails loudly with "manual reset needed".</li>
+        </ul>
+      </div>
+      <div class="case">
+        <h3>What the suite proves</h3>
+        <ul class="plain">
+          <li>Row Level Security checks: a user cannot read or write another user's data, and sees only their own children.</li>
+          <li>A failed network request (blocked with WebDriver BiDi) leaves the app usable.</li>
+          <li>Every UI test also fails if the page threw an uncaught JavaScript error, even when its own checks passed.</li>
+          <li>One open security bug is pinned by a test that is expected to fail, in its own suite, until the app is fixed.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="secrets">
+    <p class="eyebrow">Secrets</p>
+    <h2>Where each secret lives, layer by layer</h2>
+    <p class="sub">The Supabase service-role key bypasses Row Level Security. Here it is only used to create test sessions and to read data for verification, never for assertions.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Secret</th><th>Local</th><th>Docker</th><th>Kubernetes</th><th>Jenkins</th></tr></thead>
+        <tbody>
+          <tr><td class="id">Service-role key</td><td><code>.env</code> (git-ignored)</td><td><code>--env-file</code> at run time, never <code>ENV</code></td><td>Secret <code>nk-env</code> via <code>envFrom</code></td><td>Secret text credential, masked</td></tr>
+          <tr><td class="id">URLs, publishable key, test emails</td><td><code>.env</code></td><td>runtime env</td><td>Secret <code>nk-env</code></td><td>Secret text credentials</td></tr>
+          <tr><td class="id">User session tokens</td><td colspan="4">Created at runtime and held in memory only. Captured browser console output goes through a token scrubber (unit tested) before it is written to disk.</td></tr>
+          <tr><td class="id">kubeconfig</td><td>from kind</td><td>-</td><td>-</td><td>Secret file, internal cluster address</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:14px">The Kubernetes Secret is recreated from Jenkins credentials on every build (<code>--dry-run=client -o yaml | kubectl apply</code>). No manifest with real values is ever committed.</p>
+  </section>
+
+  <section class="block" id="dag">
+    <p class="eyebrow">Test design</p>
+    <h2>The DAG demo suite: one root cause, not twenty failures</h2>
+    <p class="sub">The default regression suite keeps tests independent. A second suite runs the same code with group dependencies declared only in the TestNG XML. If the session test breaks, everything that needs a session is SKIPPED instead of failing, so the report points straight at the root cause.</p>
+<pre>public ──► session ──► features ──► logout
+              │
+              └──► writes        (side branch: skipped writes do not block logout)
+
+mvn test "-Dsuite=testng-dag.xml" "-Ddag.breakSession=true"
+  T5 session   FAILED
+  T6 to T14    SKIPPED</pre>
+    <p class="sub">The writes branch came from a real bug: when the write tests were in the main chain, turning writes off skipped logout too.</p>
+  </section>
+
+  <section class="block" id="broke">
+    <p class="eyebrow">Lessons</p>
+    <h2>Six things that broke, and what each one taught me</h2>
+    <p class="sub">All eleven entries, with exact errors and the command that proved each fix, are in the <a href="https://github.com/HunterSreeni/nithyakarma-delivery-pipeline/blob/main/BUGLOG.md" target="_blank" rel="noopener">bug log</a>.</p>
+
+    <article class="case">
+      <div class="case-head"><h3>1. The admin key could not clean up</h3><span class="tag">Test data &middot; #6</span></div>
+      <dl class="facts">
+        <dt>Symptom</dt><dd>With writes on, cleanup failed with HTTP 403 and left the test account with extra points, a streak and a stray log.</dd>
+        <dt>Cause</dt><dd>The plan assumed the service-role key can write anything. In this database it only has SELECT on the app tables.</dd>
+        <dt>Fix</dt><dd>Service role is now read-only in the code. Cleanup runs as the data's owner, through RLS, and checks every restore. I reset the account by hand from a snapshot.</dd>
+        <dt>Lesson</dt><dd>Check what your "admin" credential can really do before cleanup depends on it. A silent leftover on production data is worse than a red build.</dd>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="case-head"><h3>2. A request intercept hung the test for four minutes</h3><span class="tag">WebDriver BiDi &middot; #5</span></div>
+      <dl class="facts">
+        <dt>Symptom</dt><dd>The resilience test ran 240 s and died with a <code>TimeoutException</code> thrown inside the BiDi callback.</dd>
+        <dt>Cause</dt><dd>The callback sent a BiDi command. Events and command replies share one connection thread, so the command waited for a reply that thread could never deliver: a deadlock.</dd>
+        <dt>Fix</dt><dd>Intercept only the target URL, send the command from a separate executor, and remove the intercept in <code>finally</code>.</dd>
+        <dt>Lesson</dt><dd>Never send a WebSocket command from inside its own event callback.</dd>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="case-head"><h3>3. <code>kind load</code> failed for the Chrome image</h3><span class="tag">Kubernetes &middot; #9</span></div>
+      <dl class="facts">
+        <dt>Symptom</dt><dd><code>ctr: content digest sha256:...: not found</code> for the Selenium image, while my own runner image loaded fine.</dd>
+        <dt>Cause</dt><dd>The Selenium image is multi-platform and only the amd64 layers were on my machine, but <code>kind load</code> imports every platform the image index lists.</dd>
+        <dt>Fix</dt><dd>Let the node pull it itself: <code>docker exec nk-control-plane crictl pull ...</code>, with <code>imagePullPolicy: IfNotPresent</code>.</dd>
+        <dt>Lesson</dt><dd>A kind node is just a container running containerd, and <code>crictl</code> works on it like on a real node.</dd>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="case-head"><h3>4. The DAG suite timed out on a one-session browser</h3><span class="tag">Selenium Grid &middot; #10</span></div>
+      <dl class="facts">
+        <dt>Symptom</dt><dd>The regression suite passed in the Job, but the DAG suite failed after 7 minutes with <code>SessionNotCreatedException</code> and "session timed out due to inactivity".</dd>
+        <dt>Cause</dt><dd>The Chrome container defaults to one session and a 300 s idle timeout. Ordering by group keeps one class's browser open while others start theirs, so the second request queued and the idle one was reaped.</dd>
+        <dt>Fix</dt><dd>Sidecar env: <code>SE_NODE_MAX_SESSIONS=4</code>, <code>SE_NODE_OVERRIDE_MAX_SESSIONS=true</code>, <code>SE_NODE_SESSION_TIMEOUT=900</code>. Same Job: 0 failures in about 70 s.</dd>
+        <dt>Lesson</dt><dd>A remote Grid has limits a local driver never shows. Size it for the suite that holds the most browsers open, not the default one.</dd>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="case-head"><h3>5. Build #1 ran with empty parameters</h3><span class="tag">Jenkins &middot; #11</span></div>
+      <dl class="facts">
+        <dt>Symptom</dt><dd>The ConfigMap got <code>SUITE=</code> (empty) and Maven failed with <code>testSuiteXmlFiles0 has null value</code>.</dd>
+        <dt>Cause</dt><dd>Jenkins only learns a Pipeline's <code>parameters {}</code> block while build #1 runs, so that build has no values at all, not even the defaults.</dd>
+        <dt>Fix</dt><dd>The Jenkinsfile falls back to the safe values itself (<code>params.SUITE ?: 'testng-regression.xml'</code>, writes false).</dd>
+        <dt>Lesson</dt><dd>Never trust a CI parameter to have a value; default it in code to the safe option. The run still failed red rather than passing with 0 tests.</dd>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="case-head"><h3>6. A container started without its ports</h3><span class="tag">Docker &middot; #7</span></div>
+      <dl class="facts">
+        <dt>Symptom</dt><dd><code>port is already allocated</code>, and after freeing the port, <code>docker start</code> ran the container with no published ports.</dd>
+        <dt>Cause</dt><dd>A stray <code>:latest</code> Chrome container held the port. <code>docker run</code> is create plus start: the create succeeded, the start failed, and restarting the half-made container did not bind the ports.</dd>
+        <dt>Fix</dt><dd>Removed the stray container and recreated (not restarted) the real one. All image tags are pinned.</dd>
+        <dt>Lesson</dt><dd>A failed <code>docker run</code> can leave a container in the Created state. Recreate it, and never use <code>latest</code>.</dd>
+      </dl>
+    </article>
+  </section>
+
+  <section class="block" id="evidence">
+    <p class="eyebrow">Evidence</p>
+    <h2>A green build, and a red one on purpose</h2>
+    <p class="sub">A pipeline that has never gone red has not been tested. A <code>DEMO_EXPECTED_FAILURE</code> parameter makes a single canary test fail on purpose, and Jenkins labels that build so nobody mistakes it for a real regression.</p>
+    <div class="shots">
+      <figure class="wide">
+        <a href="delivery-pipeline/jenkins-job-overview.png" target="_blank" rel="noopener"><img src="delivery-pipeline/jenkins-job-overview.png" alt="Jenkins stage view of builds 1 to 4 with test result trend" loading="lazy" /></a>
+        <figcaption><b>Stage view:</b> builds #1 to #4. Build #1 is the empty-parameter bug above; #4 is the intentional red. Click any image for full size.</figcaption>
+      </figure>
+      <figure>
+        <a href="delivery-pipeline/build-3-green-test-result.png" target="_blank" rel="noopener"><img src="delivery-pipeline/build-3-green-test-result.png" alt="Jenkins build 3 test result: 23 tests, 20 passed, 3 skipped, 0 failed" loading="lazy" /></a>
+        <figcaption><b>Build #3, defaults:</b> SUCCESS, 23 run, 20 passed, 3 skipped (writes off).</figcaption>
+      </figure>
+      <figure>
+        <a href="delivery-pipeline/build-4-intentional-red-test-result.png" target="_blank" rel="noopener"><img src="delivery-pipeline/build-4-intentional-red-test-result.png" alt="Jenkins build 4 test result: only CanaryTest failed" loading="lazy" /></a>
+        <figcaption><b>Build #4, demo on:</b> FAILURE, and the only failure is the canary.</figcaption>
+      </figure>
+      <figure>
+        <a href="delivery-pipeline/build-4-intentional-red-summary.png" target="_blank" rel="noopener"><img src="delivery-pipeline/build-4-intentional-red-summary.png" alt="Jenkins build 4 summary labelled INTENTIONAL RED - demo" loading="lazy" /></a>
+        <figcaption><b>Build #4 summary:</b> labelled "INTENTIONAL RED - demo".</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="prod">
+    <p class="eyebrow">Production</p>
+    <h2>What changes on a real cluster</h2>
+    <div class="two">
+      <div class="case">
+        <h3>What I would change</h3>
+        <ul class="plain">
+          <li>A separate test environment with seeded data instead of production accounts.</li>
+          <li>A registry with scanned, signed images instead of <code>kind load</code>.</li>
+          <li>A secrets manager (Vault, a cloud secret store, External Secrets Operator) instead of credentials piped into <code>kubectl</code>.</li>
+          <li>A service account that can only manage Jobs in one namespace, not a cluster-admin kubeconfig.</li>
+          <li>Reports in object storage, not a hostPath on the node.</li>
+          <li>Builds on agents, on a schedule and on every commit, with a Grid sized for parallel classes.</li>
+        </ul>
+      </div>
+      <div class="case">
+        <h3>Future work</h3>
+        <ul class="plain">
+          <li><b>SonarQube</b> analysis with a quality gate stage.</li>
+          <li><b>Trivy</b> image scan that fails the build on critical vulnerabilities.</li>
+          <li><b>GHCR</b> push tagged with build number and git SHA, pulled by the Job.</li>
+          <li>A dedicated cleanup route for the write test once the open security bug is fixed.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="talk">
+    <p class="eyebrow">Takeaway</p>
+    <h2>What I would say in an interview</h2>
+    <p class="sub">Most of the work was not in the tests. It was in the edges between layers: a shell splitting arguments, a Grid default of one session, a Job that deletes its own evidence, a CI parameter that is empty on the first run, an admin key that turned out to be read-only. Each one passed locally and broke one layer up. I logged every one with its cause and the command that proved the fix, so I can explain why the pipeline looks the way it does, not just that it is green.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Sreenivasan Sivakumar &middot; <a href="/">hunter-sreeni.netlify.app</a> &middot; <a href="https://github.com/HunterSreeni/nithyakarma-delivery-pipeline" target="_blank" rel="noopener">source on GitHub</a></div>
+</footer>
+</body>
+</html>

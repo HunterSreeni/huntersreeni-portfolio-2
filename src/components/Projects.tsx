@@ -15,21 +15,24 @@ const PROJECTS = [
     ],
   },
   {
-    caseId: "TC-002 · nithyakarma.org",
+    caseId: "TC-002 · nithyakarma-delivery-pipeline",
+    name: "Nithyakarma Delivery Pipeline",
+    status: "Flagship",
+    body: "A Java + Selenium + REST Assured suite delivered through Docker, a Kubernetes Job on kind (Chrome as a native sidecar) and a parameterised Jenkins pipeline, against the live app's production data. Secrets stay out of Git, image layers and logs; writes are opt-in and undone; every failure along the way is logged with cause and fix.",
+    links: [
+      { label: "GitHub →", href: "https://github.com/HunterSreeni/nithyakarma-delivery-pipeline" },
+      { label: "Case study →", href: "/case-studies/delivery-pipeline.html" },
+    ],
+  },
+  {
+    caseId: "TC-003 · nithyakarma.org",
     name: "Nithyakarma",
     status: "Flagship",
-    body: "A community daily-ritual tracker, not a solo personal tool - built and maintained end to end for a wider group of practitioners. React + Vite frontend, packaged for Android/PWA via Capacitor, iOS in progress. I own the product decisions, the build, the release, and the debugging.",
+    body: "A community daily-ritual tracker, not a solo personal tool - built and maintained end to end for a wider group of practitioners. React + Vite PWA on Supabase, packaged for Android via Capacitor and live on Google Play. A GitHub Actions pipeline gates every release on automated tests. I own the product decisions, the build, the release, and the debugging.",
     links: [
       { label: "Visit →", href: "https://nithyakarma.org" },
       { label: "Play Store →", href: "https://play.google.com/store/apps/details?id=org.nithyakarma.app" },
     ],
-  },
-  {
-    caseId: "TC-003 · electron-mcp-browser",
-    name: "Electronium",
-    status: "Flagship",
-    body: "A local-first MCP server that bridges AI assistants to a real, logged-in Chrome session over Chrome DevTools Protocol. Any MCP-compatible AI can use it, not just mine.",
-    links: [{ label: "GitHub →", href: "https://github.com/HunterSreeni/electron-mcp-browser" }],
   },
   {
     caseId: "TC-004 · Google × Hack2skill",
@@ -40,13 +43,6 @@ const PROJECTS = [
       { label: "GitHub →", href: "https://github.com/HunterSreeni/hack2skill" },
       { label: "Certificate →", href: "/certs/promptwars-kerala-2026.pdf" },
     ],
-  },
-  {
-    caseId: "TC-005 · npm",
-    name: "mypensieve",
-    status: "Sunset",
-    body: "A general-purpose autonomous CLI agent with persistent memory across sessions, built during the early wave of AI coding agents. Published to npm with 22 versions shipped through an automated GitHub Actions release pipeline. Retired now that the space has more mature tooling, kept here as proof of a real, versioned release process.",
-    links: [{ label: "npm →", href: "https://www.npmjs.com/package/mypensieve" }],
   },
 ]
 

@@ -3,12 +3,14 @@ import Section from "./Section"
 import WireGadget from "./WireGadget"
 
 const BULLETS = [
-  "Built the test automation suite from zero on joining. Introduced Cypress and integrated it into the Azure DevOps pipeline, then evaluated and migrated the suite to Playwright as cross-browser requirements grew, for WebKit-engine coverage and cleaner CI integration. Sole owner and maintainer of the automation repo since.",
-  "Replaced a fully manual, multi-day release regression process with an automated suite, enabling a materially faster and more predictable release cadence.",
-  "Own testing across a multi-platform product: database, backend, web application, and native player clients on Android, iOS and Fire OS. Work with development and product from the requirements stage to shape testable acceptance criteria before build, not just test after.",
-  "Automated coverage across the web application, API and database layers. Native player apps and streaming hardware are tested manually against a priority device matrix, within an Agile development flow.",
-  "API and database-backed functionality testing, defect investigation, and root-cause debugging using shell, ADB and PowerShell. Systematic, user-POV testing of major feature launches to catch edge-case failures before they reach an end user.",
-  "Co-own the release gate end to end: defect triage, release checklist, and one of two final go/no-go decisions on every production release. Onboarded a second automation engineer and set the standards the team writes and reviews tests against.",
+  "Built the automation framework from zero in Cypress (JavaScript) on Azure DevOps (Sep 2022 - Jun 2023). Researched alternatives, presented my findings to leadership and led the migration to Playwright (TypeScript) for WebKit coverage and cleaner CI.",
+  "Grew the Playwright suite to ~234 tests (~104 UI, ~130 API), running in ~35 minutes; release regression went from ~3 days to ~1 day.",
+  "Cut the per-run flake rate from ~5% to ~3% by fixing root causes in unstable UI specs (~45 down to ~15) instead of adding retries.",
+  "Backend API testing in Playwright with schema validation, plus a separate ~170-test Postman/Bruno suite. SQL (MS SQL Server) checks on backend data; performance testing with JMeter.",
+  "Co-own the release quality gate as one of two go/no-go owners. Signed off 35+ production releases across the web manager, API and player apps (Android, iOS, Windows, Fire OS).",
+  "Own manual and exploratory testing across the device matrix: Android phones and tablets (including XOGO hardware), iOS, Windows UWP, Amazon Fire TV Stick 4K and Signage Stick, Chromecast and Raspberry Pi 4B. Introduced Android automation with ADB.",
+  "Accessibility (WCAG) and visual regression checks. Shift-left: review Figma designs and work with product and dev to shape acceptance criteria for authentication, billing and access control.",
+  "Onboarded and mentored a second automation engineer, set the team's test standards and review automation PRs.",
 ]
 
 export default function Experience() {
