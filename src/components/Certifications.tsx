@@ -63,7 +63,7 @@ export default function Certifications() {
         </h3>
         <CertCard
           name="DevOps Mastery: Jenkins, Kubernetes, Docker & ArgoCD"
-          issuer="Udemy · Oct 2026 · 6.5h"
+          issuer="Udemy · Oct 2026"
           link="/certs/udemy-devops-mastery.pdf"
         />
         <CertCard
